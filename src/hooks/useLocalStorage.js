@@ -1,24 +1,18 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 
-type ValueSetter<T> = T | ((prev: T) => T);
-
-export default function useLocalStorage<T>(
-  key: string,
-  defaultValue: T
-): [T, Dispatch<SetStateAction<T>>] {
-  const [value, setValue] = useState<T>(() => {
+export default function useLocalStorage(key, defaultValue) {
+  const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key);
 
     return storedValue === null ? defaultValue : JSON.parse(storedValue);
   });
 
   useEffect(() => {
-    const listener = (e: StorageEvent) => {
+    const listener = (e) => {
       if (e.storageArea === localStorage && e.key === key) {
-        setValue(JSON.parse(e.newValue!));
+        setValue(JSON.parse(e.newValue));
       }
     };
-
     window.addEventListener("storage", listener);
 
     return () => {
@@ -26,12 +20,10 @@ export default function useLocalStorage<T>(
     };
   }, [key, defaultValue]);
 
-  const setValueInLocalStorage = (newValue: ValueSetter<T>) => {
+  const setValueInLocalStorage = (newValue) => {
     setValue((currentValue) => {
       const result =
-        typeof newValue === "function"
-          ? (newValue as (prev: T) => T)(currentValue)
-          : (newValue as T);
+        typeof newValue === "function" ? newValue(currentValue) : newValue;
 
       localStorage.setItem(key, JSON.stringify(result));
 

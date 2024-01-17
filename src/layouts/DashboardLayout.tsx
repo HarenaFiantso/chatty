@@ -1,5 +1,3 @@
 export const DashboardLayout = () => {
-  return (
-    <div>DashboardLayout</div>
-  )
-}
+  return <div>DashboardLayout</div>;
+};

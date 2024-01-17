@@ -1,5 +1,3 @@
 export const AuthLayout = () => {
-  return (
-    <div>AuthLayout</div>
-  )
-}
+  return <div>AuthLayout</div>;
+};

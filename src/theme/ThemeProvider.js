@@ -1,18 +1,23 @@
-import { ReactNode, useMemo } from "react";
+import PropTypes from "prop-types";
+import { useMemo } from "react";
 import { CssBaseline } from "@mui/material";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
   StyledEngineProvider,
-  Theme,
 } from "@mui/material/styles";
-import useSettings from "../hooks/useSettings";
+import useSettings from "../hooks/useSettings.js";
+import palette from "./palette";
+import typography from "./typography";
+import breakpoints from "./breakpoints";
+import componentsOverride from "./overrides";
+import shadows, { customShadows } from "./shadows";
 
-interface ThemeProviderProps {
-  children: ReactNode;
-}
+ThemeProvider.propTypes = {
+  children: PropTypes.node,
+};
 
-export default function ThemeProvider({ children }: ThemeProviderProps) {
+export default function ThemeProvider({ children }) {
   const { themeMode, themeDirection } = useSettings();
 
   const isLight = themeMode === "light";
@@ -30,7 +35,9 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     [isLight, themeDirection]
   );
 
-  const theme: Theme = createTheme(themeOptions);
+  const theme = createTheme(themeOptions);
+
+  theme.components = componentsOverride(theme);
 
   return (
     <StyledEngineProvider injectFirst>
