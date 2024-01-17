@@ -1,8 +1,8 @@
-/* @ts-ignore */
 import palette from "../theme/Palette";
 
 interface ColorPreset {
   name: string;
+  value: string;
   lighter: string;
   light: string;
   main: string;

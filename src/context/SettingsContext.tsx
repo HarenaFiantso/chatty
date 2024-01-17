@@ -1,13 +1,40 @@
 // provider === component
-import { createContext, useEffect } from "react";
-import { defaultSettings } from "../config";
+import { ReactNode, createContext, useEffect } from "react";
+import { defaultSettings } from "../config/config";
 import useLocalStorage from "../hooks/useLocalStorage";
-import getColorPresets, {
-  defaultPreset,
-  colorPresets,
-} from "../utils/getColorPresets";
+import getColorPresets, { colorPresets } from "../utils/getColorPresets";
 
-const initialState = {
+interface Settings {
+  themeMode: string;
+  themeLayout: string;
+  themeStretch: boolean;
+  themeContrast: string;
+  themeDirection: string;
+  themeColorPresets: string;
+}
+
+interface SettingsContextType extends Settings {
+  onToggleMode: () => void;
+  onChangeMode: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onToggleDirection: () => void;
+  onChangeDirection: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeDirectionByLang: (lang: string) => void;
+  onToggleLayout: () => void;
+  onChangeLayout: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onToggleContrast: () => void;
+  onChangeContrast: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeColor: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  setColor: (color: string) => void;
+  colorOption: { name: string; value: string }[];
+  onToggleStretch: () => void;
+  onResetSetting: () => void;
+}
+
+interface SettingsProviderProps {
+  children: ReactNode;
+}
+
+const initialState: SettingsContextType = {
   ...defaultSettings,
   onToggleMode: () => {},
   onChangeMode: () => {},
@@ -19,22 +46,27 @@ const initialState = {
   onToggleContrast: () => {},
   onChangeContrast: () => {},
   onChangeColor: () => {},
-  setColor: defaultPreset,
+  setColor: () => {},
   colorOption: [],
   onToggleStretch: () => {},
   onResetSetting: () => {},
 };
 
-const SettingsContext = createContext(initialState);
+const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
-const SettingsProvider = ({ children }) => {
-  const [settings, setSettings] = useLocalStorage("settings", {
-    themeMode: initialState.themeMode,
-    themeLayout: initialState.themeLayout,
-    themeStretch: initialState.themeStretch,
-    themeContrast: initialState.themeContrast,
-    themeDirection: initialState.themeDirection,
-    themeColorPresets: initialState.themeColorPresets,
+const SettingsProvider: React.FC<SettingsProviderProps> = ({
+  children,
+}: SettingsProviderProps) => {
+  const [settings, setSettings] = useLocalStorage<Settings>({
+    key: "settings",
+    defaultValue: {
+      themeMode: initialState.themeMode,
+      themeLayout: initialState.themeLayout,
+      themeStretch: initialState.themeStretch,
+      themeContrast: initialState.themeContrast,
+      themeDirection: initialState.themeDirection,
+      themeColorPresets: initialState.themeColorPresets,
+    },
   });
 
   const isArabic = localStorage.getItem("i18nextLng") === "ar";
@@ -52,7 +84,7 @@ const SettingsProvider = ({ children }) => {
     });
   };
 
-  const onChangeMode = (event) => {
+  const onChangeMode = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSettings({
       ...settings,
       themeMode: event.target.value,
@@ -66,14 +98,14 @@ const SettingsProvider = ({ children }) => {
     });
   };
 
-  const onChangeDirection = (event) => {
+  const onChangeDirection = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSettings({
       ...settings,
       themeDirection: event.target.value,
     });
   };
 
-  const onChangeDirectionByLang = (lang) => {
+  const onChangeDirectionByLang = (lang: string) => {
     setSettings({
       ...settings,
       themeDirection: lang === "ar" ? "rtl" : "ltr",
@@ -88,7 +120,7 @@ const SettingsProvider = ({ children }) => {
     });
   };
 
-  const onChangeLayout = (event) => {
+  const onChangeLayout = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSettings({
       ...settings,
       themeLayout: event.target.value,
@@ -102,16 +134,14 @@ const SettingsProvider = ({ children }) => {
     });
   };
 
-  const onChangeContrast = (event) => {
+  const onChangeContrast = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSettings({
       ...settings,
       themeContrast: event.target.value,
     });
   };
 
-  // Color
-
-  const onChangeColor = (event) => {
+  const onChangeColor = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSettings({
       ...settings,
       themeColorPresets: event.target.value,
