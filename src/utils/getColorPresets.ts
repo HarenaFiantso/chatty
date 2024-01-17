@@ -1,4 +1,4 @@
-/* @ts-ignore */ 
+/* @ts-ignore */
 import palette from "../theme/Palette";
 
 interface ColorPreset {
@@ -12,12 +12,10 @@ interface ColorPreset {
 }
 
 export const colorPresets: ColorPreset[] = [
-  // DEFAULT
   {
     name: "default",
     ...palette.light.primary,
   },
-  // PURPLE
   {
     name: "purple",
     lighter: "#EBD6FD",
@@ -27,7 +25,6 @@ export const colorPresets: ColorPreset[] = [
     darker: "#200A69",
     contrastText: "#fff",
   },
-  // CYAN
   {
     name: "cyan",
     lighter: "#D1FFFC",
@@ -37,7 +34,6 @@ export const colorPresets: ColorPreset[] = [
     darker: "#053D7A",
     contrastText: palette.light.grey[800],
   },
-  // BLUE
   {
     name: "blue",
     lighter: "#D1E9FC",
@@ -47,7 +43,6 @@ export const colorPresets: ColorPreset[] = [
     darker: "#061B64",
     contrastText: "#fff",
   },
-  // ORANGE
   {
     name: "orange",
     lighter: "#FEF4D4",
@@ -57,7 +52,6 @@ export const colorPresets: ColorPreset[] = [
     darker: "#793908",
     contrastText: palette.light.grey[800],
   },
-  // RED
   {
     name: "red",
     lighter: "#FFE3D5",
@@ -85,7 +79,9 @@ interface PresetMap {
   default: ColorPreset;
 }
 
-export default function getColorPresets(presetsKey: keyof PresetMap): ColorPreset {
+export default function getColorPresets(
+  presetsKey: keyof PresetMap
+): ColorPreset {
   return {
     purple: purplePreset,
     cyan: cyanPreset,
