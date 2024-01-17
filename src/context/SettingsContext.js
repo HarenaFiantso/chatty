@@ -1,35 +1,13 @@
-import React, { createContext, useEffect, FC } from "react";
-import { defaultSettings } from "../config/Config";
+// provider === component
+import { createContext, useEffect } from "react";
+import { defaultSettings } from "../config";
 import useLocalStorage from "../hooks/useLocalStorage";
-import getColorPresets, { defaultPreset, colorPresets } from "../utils/getColorPresets";
+import getColorPresets, {
+  defaultPreset,
+  colorPresets,
+} from "../utils/getColorPresets";
 
-interface SettingsState {
-  themeMode: string;
-  themeLayout: string;
-  themeStretch: boolean;
-  themeContrast: string;
-  themeDirection: string;
-  themeColorPresets: string;
-}
-
-interface SettingsContextProps extends SettingsState {
-  onToggleMode: () => void;
-  onChangeMode: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onToggleDirection: () => void;
-  onChangeDirection: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeDirectionByLang: (lang: string) => void;
-  onToggleLayout: () => void;
-  onChangeLayout: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onToggleContrast: () => void;
-  onChangeContrast: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeColor: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onToggleStretch: () => void;
-  onResetSetting: () => void;
-  setColor: (preset: string) => void;
-  colorOption: { name: string; value: string }[];
-}
-
-const initialState: SettingsContextProps = {
+const initialState = {
   ...defaultSettings,
   onToggleMode: () => {},
   onChangeMode: () => {},
@@ -41,16 +19,16 @@ const initialState: SettingsContextProps = {
   onToggleContrast: () => {},
   onChangeContrast: () => {},
   onChangeColor: () => {},
+  setColor: defaultPreset,
+  colorOption: [],
   onToggleStretch: () => {},
   onResetSetting: () => {},
-  setColor: () => {},
-  colorOption: [],
 };
 
-const SettingsContext = createContext<SettingsContextProps>(initialState);
+const SettingsContext = createContext(initialState);
 
-const SettingsProvider: FC = ({ children }) => {
-  const [settings, setSettings] = useLocalStorage<SettingsState>("settings", {
+const SettingsProvider = ({ children }) => {
+  const [settings, setSettings] = useLocalStorage("settings", {
     themeMode: initialState.themeMode,
     themeLayout: initialState.themeLayout,
     themeStretch: initialState.themeStretch,
@@ -74,7 +52,7 @@ const SettingsProvider: FC = ({ children }) => {
     });
   };
 
-  const onChangeMode = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeMode = (event) => {
     setSettings({
       ...settings,
       themeMode: event.target.value,
@@ -88,14 +66,14 @@ const SettingsProvider: FC = ({ children }) => {
     });
   };
 
-  const onChangeDirection = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeDirection = (event) => {
     setSettings({
       ...settings,
       themeDirection: event.target.value,
     });
   };
 
-  const onChangeDirectionByLang = (lang: string) => {
+  const onChangeDirectionByLang = (lang) => {
     setSettings({
       ...settings,
       themeDirection: lang === "ar" ? "rtl" : "ltr",
@@ -105,11 +83,12 @@ const SettingsProvider: FC = ({ children }) => {
   const onToggleLayout = () => {
     setSettings({
       ...settings,
-      themeLayout: settings.themeLayout === "vertical" ? "horizontal" : "vertical",
+      themeLayout:
+        settings.themeLayout === "vertical" ? "horizontal" : "vertical",
     });
   };
 
-  const onChangeLayout = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeLayout = (event) => {
     setSettings({
       ...settings,
       themeLayout: event.target.value,
@@ -123,14 +102,16 @@ const SettingsProvider: FC = ({ children }) => {
     });
   };
 
-  const onChangeContrast = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeContrast = (event) => {
     setSettings({
       ...settings,
       themeContrast: event.target.value,
     });
   };
 
-  const onChangeColor = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // Color
+
+  const onChangeColor = (event) => {
     setSettings({
       ...settings,
       themeColorPresets: event.target.value,
@@ -166,16 +147,16 @@ const SettingsProvider: FC = ({ children }) => {
         onChangeDirectionByLang,
         onToggleLayout,
         onChangeLayout,
-        onToggleContrast,
         onChangeContrast,
-        onChangeColor,
+        onToggleContrast,
         onToggleStretch,
-        onResetSetting,
+        onChangeColor,
         setColor: getColorPresets(settings.themeColorPresets),
         colorOption: colorPresets.map((color) => ({
           name: color.name,
           value: color.main,
         })),
+        onResetSetting,
       }}
     >
       {children}
@@ -184,4 +165,5 @@ const SettingsProvider: FC = ({ children }) => {
 };
 
 export { SettingsContext };
+
 export default SettingsProvider;
