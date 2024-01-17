@@ -1,4 +1,5 @@
-import palette from "../theme/palette";
+/* @ts-ignore */ 
+import palette from "../theme/Palette";
 
 interface ColorPreset {
   name: string;
