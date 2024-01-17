@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, FC } from "react";
-import { defaultSettings } from "../config";
+import { defaultSettings } from "../config/Config";
 import useLocalStorage from "../hooks/useLocalStorage";
 import getColorPresets, { defaultPreset, colorPresets } from "../utils/getColorPresets";
 
