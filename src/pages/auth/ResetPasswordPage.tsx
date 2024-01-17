@@ -1,5 +1,3 @@
-export const ResetPasswordPage = () => {
-  return (
-    <div>ResetPasswordPage</div>
-  )
+export default function ResetPasswordPage() {
+  return <div>ResetPasswordPage</div>;
 }

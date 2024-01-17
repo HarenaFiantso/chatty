@@ -1,5 +1,3 @@
-export const Call = () => {
-  return (
-    <div>Call</div>
-  )
+export default function Call() {
+  return <div>Call</div>;
 }

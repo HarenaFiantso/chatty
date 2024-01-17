@@ -1,5 +1,3 @@
-export const NewPasswordPage = () => {
-  return (
-    <div>NewPasswordPage</div>
-  )
+export default function NewPasswordPage() {
+  return <div>NewPasswordPage</div>;
 }

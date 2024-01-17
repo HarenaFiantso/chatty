@@ -1,5 +1,3 @@
-export const VerifyPage = () => {
-  return (
-    <div>VerifyPage</div>
-  )
+export default function VerifyPage() {
+  return <div>VerifyPage</div>;
 }

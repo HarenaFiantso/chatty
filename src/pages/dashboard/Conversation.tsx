@@ -1,5 +1,3 @@
-export const Conversation = () => {
-  return (
-    <div>Conversation</div>
-  )
+export default function Conversation() {
+  return <div>Conversation</div>;
 }

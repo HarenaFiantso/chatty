@@ -1,5 +1,3 @@
-export const MainApp = () => {
-  return (
-    <div>MainApp</div>
-  )
+export default function MainApp() {
+  return <div>MainApp</div>;
 }

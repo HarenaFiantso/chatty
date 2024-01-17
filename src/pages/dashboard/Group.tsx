@@ -1,5 +1,3 @@
-export const Group = () => {
-  return (
-    <div>Group</div>
-  )
+export default function Group() {
+  return <div>Group</div>;
 }
