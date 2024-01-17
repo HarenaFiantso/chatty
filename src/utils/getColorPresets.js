@@ -1,17 +1,6 @@
-import palette from "../theme/Palette";
+import palette from "../theme/palette";
 
-interface ColorPreset {
-  name: string;
-  value: string;
-  lighter: string;
-  light: string;
-  main: string;
-  dark: string;
-  darker: string;
-  contrastText: string;
-}
-
-export const colorPresets: ColorPreset[] = [
+export const colorPresets = [
   {
     name: "default",
     ...palette.light.primary,
@@ -41,6 +30,7 @@ export const colorPresets: ColorPreset[] = [
     main: "#2065D1",
     dark: "#103996",
     darker: "#061B64",
+
     contrastText: "#fff",
   },
   {
@@ -63,25 +53,14 @@ export const colorPresets: ColorPreset[] = [
   },
 ];
 
-export const defaultPreset: ColorPreset = colorPresets[0];
-export const purplePreset: ColorPreset = colorPresets[1];
-export const cyanPreset: ColorPreset = colorPresets[2];
-export const bluePreset: ColorPreset = colorPresets[3];
-export const orangePreset: ColorPreset = colorPresets[4];
-export const redPreset: ColorPreset = colorPresets[5];
+export const defaultPreset = colorPresets[0];
+export const purplePreset = colorPresets[1];
+export const cyanPreset = colorPresets[2];
+export const bluePreset = colorPresets[3];
+export const orangePreset = colorPresets[4];
+export const redPreset = colorPresets[5];
 
-interface PresetMap {
-  purple: ColorPreset;
-  cyan: ColorPreset;
-  blue: ColorPreset;
-  orange: ColorPreset;
-  red: ColorPreset;
-  default: ColorPreset;
-}
-
-export default function getColorPresets(
-  presetsKey: keyof PresetMap
-): ColorPreset {
+export default function getColorPresets(presetsKey) {
   return {
     purple: purplePreset,
     cyan: cyanPreset,

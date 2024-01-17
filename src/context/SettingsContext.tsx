@@ -1,8 +1,9 @@
-// provider === component
+// @ts-ignore
+import getColorPresets, { colorPresets } from "../utils/getColorPresets";
+
 import { ReactNode, createContext, useEffect } from "react";
 import { defaultSettings } from "../config/config";
 import useLocalStorage from "../hooks/useLocalStorage";
-import getColorPresets, { colorPresets } from "../utils/getColorPresets";
 
 interface Settings {
   themeMode: string;
@@ -182,7 +183,7 @@ const SettingsProvider: React.FC<SettingsProviderProps> = ({
         onToggleStretch,
         onChangeColor,
         setColor: getColorPresets(settings.themeColorPresets),
-        colorOption: colorPresets.map((color) => ({
+        colorOption: colorPresets.map((color: any) => ({
           name: color.name,
           value: color.main,
         })),
