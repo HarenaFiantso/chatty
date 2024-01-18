@@ -97,3 +97,13 @@ export interface Typography {
   button: TypographyVariant;
   article: { fontWeight: number };
 }
+
+export interface Breakpoints {
+  values: {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+  };
+}
