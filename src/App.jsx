@@ -1,5 +1,9 @@
-const App = () => {
-  return <h1>Hello World</h1>;
-}
+import Router from "./routes";
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <Router />
+    </>
+  );
+}
