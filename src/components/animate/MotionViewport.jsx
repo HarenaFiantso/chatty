@@ -1,21 +1,20 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
-// @mui
-import { Box } from '@mui/material';
-// hooks
-import useResponsive from '../../hooks/useResponsive';
-//
-import { varContainer } from '.';
-
-// ----------------------------------------------------------------------
+import PropTypes from "prop-types";
+import { m } from "framer-motion";
+import { Box } from "@mui/material";
+import useResponsive from "../../hooks/useResponsive";
+import { varContainer } from ".";
 
 MotionViewport.propTypes = {
   children: PropTypes.node.isRequired,
   disableAnimatedMobile: PropTypes.bool,
 };
 
-export default function MotionViewport({ children, disableAnimatedMobile = false, ...other }) {
-  const isMobile = useResponsive('down', 'sm');
+export default function MotionViewport({
+  children,
+  disableAnimatedMobile = false,
+  ...other
+}) {
+  const isMobile = useResponsive("down", "sm");
 
   if (isMobile && disableAnimatedMobile) {
     return <Box {...other}>{children}</Box>;
