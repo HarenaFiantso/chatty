@@ -3,7 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 
 import DashboardLayout from "../layouts/dashboard";
 
-import { DEFAULT_PATH } from "../config";
+import { DEFAULT_PATH } from "../config/config";
 import LoadingScreen from "../components/LoadingScreen";
 
 const Loadable = (Component) => (props) => {
