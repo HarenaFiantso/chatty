@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import useSettings from "../../../hooks/useSettings";
 import cssStyles from "../../../utils/cssStyles";
-import { NAVBAR, defaultSettings } from "../../../config";
+import { NAVBAR, defaultSettings } from "../../../config/config";
 import Iconify from "../../Iconify";
 import Scrollbar from "../../Scrollbar";
 import ToggleButton from "./ToggleButton";
