@@ -6,6 +6,14 @@ import MainApp from "../pages/dashboard/MainApp";
 
 import Page404 from "../pages/Page404";
 
+const Loadable = (Component) => (props) => {
+  return (
+    <Suspense fallback="Loading..">
+      <Component {...props} />
+    </Suspense>
+  );
+};
+
 export default function Router() {
   return useRoutes([
     {
@@ -23,3 +31,7 @@ export default function Router() {
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
+
+const MainApp = Loadable(
+  lazy(() => import("../pages/dashboard/MainApp"))
+);
