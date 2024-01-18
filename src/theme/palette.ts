@@ -1,63 +1,12 @@
 import { alpha } from "@mui/material/styles";
-
-interface Color {
-  lighter: string;
-  light: string;
-  main: string;
-  dark: string;
-  darker: string;
-}
-
-interface GreyColors {
-  [key: number]: string;
-  [key: string]: string;
-}
-
-interface Gradients {
-  primary: string;
-  info: string;
-  success: string;
-  warning: string;
-  error: string;
-}
-
-interface ChartColors {
-  violet: string[];
-  blue: string[];
-  green: string[];
-  yellow: string[];
-  red: string[];
-}
-
-interface ActionColors {
-  hover: string;
-  selected: string;
-  disabled: string;
-  disabledBackground: string;
-  focus: string;
-  hoverOpacity: number;
-  disabledOpacity: number;
-}
-
-interface Common {
-  common: { black: string; white: string };
-  primary: Color & { contrastText: string };
-  secondary: Color & { contrastText: string };
-  info: Color & { contrastText: string };
-  success: Color & { contrastText: string };
-  warning: Color & { contrastText: string };
-  error: Color & { contrastText: string };
-  grey: GreyColors;
-  gradients: Gradients;
-  chart: ChartColors;
-  divider: string;
-  action: ActionColors;
-}
-
-interface Palette {
-  light: Object;
-  dark: Object;
-}
+import {
+  Color,
+  GreyColors,
+  Gradients,
+  ChartColors,
+  Common,
+  Palette,
+} from "./types/index";
 
 function createGradient(color1: string, color2: string): string {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;

@@ -1,34 +1,28 @@
 import PropTypes from "prop-types";
-import { useMemo, ReactNode } from "react";
+import { useMemo } from "react";
 import { CssBaseline } from "@mui/material";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
   StyledEngineProvider,
-  Theme,
-  ThemeOptions,
 } from "@mui/material/styles";
-import useSettings from "../hooks/useSettings";
-import palette from "./Palette";
+import useSettings from "../hooks/useSettings.js";
+import palette from "./palette";
 import typography from "./typography";
 import breakpoints from "./breakpoints";
 import componentsOverride from "./overrides";
 import shadows, { customShadows } from "./shadows";
 
-interface ThemeProviderProps {
-  children: ReactNode;
-}
-
 ThemeProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
+export default function ThemeProvider({ children }) {
   const { themeMode, themeDirection } = useSettings();
 
   const isLight = themeMode === "light";
 
-  const themeOptions: ThemeOptions = useMemo(
+  const themeOptions = useMemo(
     () => ({
       palette: isLight ? palette.light : palette.dark,
       typography,
@@ -41,7 +35,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps): JSX.Ele
     [isLight, themeDirection]
   );
 
-  const theme: Theme = createTheme(themeOptions);
+  const theme = createTheme(themeOptions);
 
   theme.components = componentsOverride(theme);
 

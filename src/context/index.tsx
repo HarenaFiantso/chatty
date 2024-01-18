@@ -1,39 +1,10 @@
 // @ts-ignore
 import getColorPresets, { colorPresets } from "../utils/getColorPresets";
 
-import { ReactNode, createContext, useEffect } from "react";
+import { createContext, useEffect } from "react";
 import { defaultSettings } from "../config/config";
 import useLocalStorage from "../hooks/useLocalStorage";
-
-interface Settings {
-  themeMode: string;
-  themeLayout: string;
-  themeStretch: boolean;
-  themeContrast: string;
-  themeDirection: string;
-  themeColorPresets: string;
-}
-
-interface SettingsContextType extends Settings {
-  onToggleMode: () => void;
-  onChangeMode: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onToggleDirection: () => void;
-  onChangeDirection: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onChangeDirectionByLang: (lang: string) => void;
-  onToggleLayout: () => void;
-  onChangeLayout: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onToggleContrast: () => void;
-  onChangeContrast: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  onChangeColor: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  setColor: (color: string) => void;
-  colorOption: { name: string; value: string }[];
-  onToggleStretch: () => void;
-  onResetSetting: () => void;
-}
-
-interface SettingsProviderProps {
-  children: ReactNode;
-}
+import { Settings, SettingsContextType, SettingsProviderProps } from "./types";
 
 const initialState: SettingsContextType = {
   ...defaultSettings,
@@ -53,7 +24,9 @@ const initialState: SettingsContextType = {
   onResetSetting: () => {},
 };
 
-const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
+const SettingsContext = createContext<SettingsContextType | undefined>(
+  undefined
+);
 
 const SettingsProvider: React.FC<SettingsProviderProps> = ({
   children,
