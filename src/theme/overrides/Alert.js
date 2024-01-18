@@ -1,13 +1,13 @@
-import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './CustomIcons';
+import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from "./CustomIcons";
 
 export default function Alert(theme) {
-  const isLight = theme.palette.mode === 'light';
+  const isLight = theme.palette.mode === "light";
 
   const standardStyle = (color) => ({
-    color: theme.palette[color][isLight ? 'darker' : 'lighter'],
-    backgroundColor: theme.palette[color][isLight ? 'lighter' : 'darker'],
-    '& .MuiAlert-icon': {
-      color: theme.palette[color][isLight ? 'main' : 'light'],
+    color: theme.palette[color][isLight ? "darker" : "lighter"],
+    backgroundColor: theme.palette[color][isLight ? "lighter" : "darker"],
+    "& .MuiAlert-icon": {
+      color: theme.palette[color][isLight ? "main" : "light"],
     },
   });
 
@@ -16,11 +16,11 @@ export default function Alert(theme) {
   });
 
   const outlinedStyle = (color) => ({
-    color: theme.palette[color][isLight ? 'darker' : 'lighter'],
-    border: `solid 1px ${theme.palette[color][isLight ? 'light' : 'dark']}`,
-    backgroundColor: theme.palette[color][isLight ? 'lighter' : 'darker'],
-    '& .MuiAlert-icon': {
-      color: theme.palette[color][isLight ? 'main' : 'light'],
+    color: theme.palette[color][isLight ? "darker" : "lighter"],
+    border: `solid 1px ${theme.palette[color][isLight ? "light" : "dark"]}`,
+    backgroundColor: theme.palette[color][isLight ? "lighter" : "darker"],
+    "& .MuiAlert-icon": {
+      color: theme.palette[color][isLight ? "main" : "light"],
     },
   });
 
@@ -37,30 +37,30 @@ export default function Alert(theme) {
 
       styleOverrides: {
         message: {
-          '& .MuiAlertTitle-root': {
+          "& .MuiAlertTitle-root": {
             marginBottom: theme.spacing(0.5),
           },
         },
         action: {
-          '& button:not(:first-of-type)': {
+          "& button:not(:first-of-type)": {
             marginLeft: theme.spacing(1),
           },
         },
 
-        standardInfo: standardStyle('info'),
-        standardSuccess: standardStyle('success'),
-        standardWarning: standardStyle('warning'),
-        standardError: standardStyle('error'),
+        standardInfo: standardStyle("info"),
+        standardSuccess: standardStyle("success"),
+        standardWarning: standardStyle("warning"),
+        standardError: standardStyle("error"),
 
-        filledInfo: filledStyle('info'),
-        filledSuccess: filledStyle('success'),
-        filledWarning: filledStyle('warning'),
-        filledError: filledStyle('error'),
+        filledInfo: filledStyle("info"),
+        filledSuccess: filledStyle("success"),
+        filledWarning: filledStyle("warning"),
+        filledError: filledStyle("error"),
 
-        outlinedInfo: outlinedStyle('info'),
-        outlinedSuccess: outlinedStyle('success'),
-        outlinedWarning: outlinedStyle('warning'),
-        outlinedError: outlinedStyle('error'),
+        outlinedInfo: outlinedStyle("info"),
+        outlinedSuccess: outlinedStyle("success"),
+        outlinedWarning: outlinedStyle("warning"),
+        outlinedError: outlinedStyle("error"),
       },
     },
   };

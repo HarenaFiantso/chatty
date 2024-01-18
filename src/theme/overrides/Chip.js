@@ -22,7 +22,6 @@ export default function Chip(theme) {
             borderColor: theme.palette.secondary.main,
           },
         },
-        //
         avatarColorInfo: {
           color: theme.palette.info.contrastText,
           backgroundColor: theme.palette.info.dark,
