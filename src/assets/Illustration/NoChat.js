@@ -1,11 +1,8 @@
 import { memo } from "react";
-// @mui
 import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
-// ----------------------------------------------------------------------
-
-function NoChat({ ...other }) {
+export default function NoChat({ ...other }) {
   const theme = useTheme();
 
   const PRIMARY_MAIN = theme.palette.primary.main;
@@ -329,5 +326,3 @@ function NoChat({ ...other }) {
     </Box>
   );
 }
-
-export default memo(NoChat);

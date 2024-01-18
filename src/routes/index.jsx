@@ -21,7 +21,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
-        { path: "app", element: <GeneralApp /> },
+        { path: "app", element: <MainApp /> },
         { path: "conversation", element: <Conversation /> },
         { path: "chats", element: <Chats /> },
         { path: "contact", element: <Contact /> },
@@ -33,8 +33,8 @@ export default function Router() {
   ]);
 }
 
-const GeneralApp = Loadable(
-  lazy(() => import("../pages/dashboard/GeneralApp"))
+const MainApp = Loadable(
+  lazy(() => import("../pages/dashboard/MainApp"))
 );
 const Conversation = Loadable(
   lazy(() => import("../pages/dashboard/Conversation"))
