@@ -1,12 +1,7 @@
-// @mui
-import { styled } from '@mui/material/styles';
-import { CardActionArea, Stack } from '@mui/material';
-// hooks
-import useSettings from '../../../hooks/useSettings';
-//
-import Iconify from '../../Iconify';
-
-// ----------------------------------------------------------------------
+import { styled } from "@mui/material/styles";
+import { CardActionArea, Stack } from "@mui/material";
+import useSettings from "../../../hooks/useSettings";
+import Iconify from "../../Iconify";
 
 const BoxStyle = styled(CardActionArea)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -15,8 +10,6 @@ const BoxStyle = styled(CardActionArea)(({ theme }) => ({
   backgroundColor: theme.palette.background.neutral,
   borderRadius: Number(theme.shape.borderRadius) * 1.25,
 }));
-
-// ----------------------------------------------------------------------
 
 export default function SettingStretch() {
   const { themeStretch, onToggleStretch } = useSettings();
@@ -41,22 +34,36 @@ export default function SettingStretch() {
         justifyContent="space-between"
         sx={{
           px: 1,
-          mx: 'auto',
+          mx: "auto",
           width: 0.5,
           height: 40,
           borderRadius: 1,
-          color: 'action.active',
-          bgcolor: 'background.default',
+          color: "action.active",
+          bgcolor: "background.default",
           boxShadow: (theme) => theme.customShadows.z12,
-          transition: (theme) => theme.transitions.create('width'),
+          transition: (theme) => theme.transitions.create("width"),
           ...(themeStretch && {
             width: 1,
-            color: 'primary.main',
+            color: "primary.main",
           }),
         }}
       >
-        <Iconify icon={themeStretch ? 'eva:arrow-ios-back-fill' : 'eva:arrow-ios-forward-fill'} {...ICON_SIZE} />
-        <Iconify icon={themeStretch ? 'eva:arrow-ios-forward-fill' : 'eva:arrow-ios-back-fill'} {...ICON_SIZE} />
+        <Iconify
+          icon={
+            themeStretch
+              ? "eva:arrow-ios-back-fill"
+              : "eva:arrow-ios-forward-fill"
+          }
+          {...ICON_SIZE}
+        />
+        <Iconify
+          icon={
+            themeStretch
+              ? "eva:arrow-ios-forward-fill"
+              : "eva:arrow-ios-back-fill"
+          }
+          {...ICON_SIZE}
+        />
       </Stack>
     </BoxStyle>
   );
