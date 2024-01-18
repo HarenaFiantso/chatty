@@ -156,7 +156,7 @@ function containsUrl(text) {
   return urlRegex.test(text);
 }
 
-const Footer = () => {
+export function Footer() {
   const theme = useTheme();
 
   const { current_conversation } = useSelector(
@@ -270,6 +270,4 @@ const Footer = () => {
       </Box>
     </Box>
   );
-};
-
-export default Footer;
+}
