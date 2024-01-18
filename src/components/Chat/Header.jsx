@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from "phosphor-react";
-import { faker } from "@faker-js/faker";
 import useResponsive from "../../hooks/useResponsive";
 import { ToggleSidebar } from "../../redux/slices/app";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,12 +64,14 @@ const Conversation_Menu = [
   },
 ];
 
-const ChatHeader = () => {
+export function ChatHeader() {
   const dispatch = useDispatch();
   const isMobile = useResponsive("between", "md", "xs", "sm");
   const theme = useTheme();
 
-  const {current_conversation} = useSelector((state) => state.conversation.direct_chat);
+  const { current_conversation } = useSelector(
+    (state) => state.conversation.direct_chat
+  );
 
   const [conversationMenuAnchorEl, setConversationMenuAnchorEl] =
     React.useState(null);
@@ -135,14 +136,15 @@ const ChatHeader = () => {
             alignItems="center"
             spacing={isMobile ? 1 : 3}
           >
-            <IconButton onClick={() => {
-              dispatch(StartVideoCall(current_conversation.user_id));
-            }}>
+            <IconButton
+              onClick={() => {
+                dispatch(StartVideoCall(current_conversation.user_id));
+              }}
+            >
               <VideoCamera />
             </IconButton>
             <IconButton
               onClick={() => {
-                
                 dispatch(StartAudioCall(current_conversation.user_id));
               }}
             >
@@ -206,10 +208,6 @@ const ChatHeader = () => {
           </Stack>
         </Stack>
       </Box>
-
-      
     </>
   );
-};
-
-export default ChatHeader;
+}
