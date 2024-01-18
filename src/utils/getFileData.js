@@ -1,7 +1,5 @@
-// ----------------------------------------------------------------------
-
 export default function getFileData(file, index) {
-  if (typeof file === 'string') {
+  if (typeof file === "string") {
     return {
       key: index ? `${file}-${index}` : file,
       preview: file,
