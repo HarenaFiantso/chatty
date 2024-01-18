@@ -1,4 +1,3 @@
-// @ts-ignore
 import { pxToRem, responsiveFontSizes } from "../utils/getFontValue";
 
 const FONT_PRIMARY = "Poppins, sans-serif";
