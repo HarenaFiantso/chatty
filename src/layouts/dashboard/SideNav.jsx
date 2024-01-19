@@ -1,9 +1,7 @@
 import { Box, Stack, useTheme } from "@mui/material";
 
-import Logo from "../../assets/Images/logo.ico";
+import Logo from "../../assets/Images/chat.png";
 import { Nav_Buttons } from "../../data";
-
-console.log(Nav_Buttons);
 
 export default function SideNav() {
   const theme = useTheme();
@@ -44,7 +42,9 @@ export default function SideNav() {
             direction="column"
             alignItems="center"
             spacing={3}
-          ></Stack>
+          >
+            Eto izany misy icone kely ohatra
+          </Stack>
         </Stack>
       </Stack>
     </Box>
