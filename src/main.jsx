@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { Provider as ReduxProvider } from "react-redux";
 
 import SettingsProvider from "./context/SettingsContext";
-import { store } from "./redux/store";
+import { store } from "./redux/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
