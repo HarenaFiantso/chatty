@@ -1,6 +1,12 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import useResponsive from "../../hooks/useResponsive";
 import BottomNav from "../../layouts/dashboard/BottomNav";
+import { CircleDashed, Users } from "phosphor-react";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../../components/search";
 
 export default function Chats() {
   const theme = useTheme();
@@ -29,7 +35,20 @@ export default function Chats() {
           >
             <Typography variant="h5">Chats</Typography>
 
-            <Stack></Stack>
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <IconButton sx={{ width: "max-content" }}>
+                <Users />
+              </IconButton>
+              <IconButton sx={{ width: "max-content" }}>
+                <CircleDashed />
+              </IconButton>
+            </Stack>
+          </Stack>
+
+          <Stack sx={{ width: "100%" }}>
+            <Search>
+              <SearchIconWrapper></SearchIconWrapper>
+            </Search>
           </Stack>
         </Stack>
       </Box>
