@@ -22,6 +22,7 @@ import {
 } from "../../components/search";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import ChatElement from "../../components/ChatElement";
+import Friends from "../../sections/dashboard/Friends";
 import { ChatList } from "../../data/index";
 import { useState } from "react";
 
