@@ -1,12 +1,22 @@
-import { Box, Divider, IconButton, Stack, useTheme } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Divider,
+  IconButton,
+  Stack,
+  useTheme,
+} from "@mui/material";
 
 import Logo from "../../assets/Images/chat.png";
+import AntSwitch from "../../components/AntSwitch";
+import useSettings from "../../hooks/useSettings";
 import { Nav_Buttons, Nav_Setting } from "../../data";
 import { useState } from "react";
 
 export default function SideNav() {
   const theme = useTheme();
   const [selected, setSelected] = useState(0);
+  const { onToggleMode } = useSettings();
 
   return (
     <Box
@@ -47,22 +57,26 @@ export default function SideNav() {
             {Nav_Buttons.map((el) =>
               el.index === selected ? (
                 <Box
+                  key={el.index}
                   sx={{
                     backgroundColor: theme.palette.primary.main,
                     borderRadius: 1.5,
                   }}
                 >
-                  <IconButton
-                    key={el.index}
-                    sx={{ width: "max-content", color: "white" }}
-                  >
+                  <IconButton sx={{ width: "max-content", color: "white" }}>
                     {el.icon}
                   </IconButton>
                 </Box>
               ) : (
                 <IconButton
                   key={el.index}
-                  sx={{ width: "max-content", color: "black" }}
+                  sx={{
+                    width: "max-content",
+                    color:
+                      theme.palette.mode === "light"
+                        ? "#080707"
+                        : theme.palette.text.primary,
+                  }}
                   onClick={() => {
                     setSelected(el.index);
                   }}
@@ -93,7 +107,13 @@ export default function SideNav() {
               Nav_Setting.map((el) => (
                 <IconButton
                   key={el.index}
-                  sx={{ width: "max-content", color: "black" }}
+                  sx={{
+                    width: "max-content",
+                    color:
+                      theme.palette.mode === "light"
+                        ? "#080707"
+                        : theme.palette.text.primary,
+                  }}
                   onClick={() => {
                     setSelected(el.index);
                   }}
@@ -103,6 +123,14 @@ export default function SideNav() {
               ))
             )}
           </Stack>
+        </Stack>
+
+        <Stack spacing={4}>
+          <AntSwitch
+            defaultChecked={theme.palette.mode === "light"}
+            onChange={onToggleMode}
+          />
+          <Avatar />
         </Stack>
       </Stack>
     </Box>
