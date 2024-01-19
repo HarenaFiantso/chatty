@@ -21,7 +21,7 @@ import {
   StyledInputBase,
 } from "../../components/search";
 import { SimpleBarStyle } from "../../components/Scrollbar";
-import { useSelector } from "react-redux";
+import ChatElement from "../../components/ChatElement";
 
 export default function Chats() {
   const theme = useTheme();
