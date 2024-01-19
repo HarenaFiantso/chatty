@@ -23,12 +23,11 @@ import {
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import ChatElement from "../../components/ChatElement";
 import { useSelector } from "react-redux";
+import { ChatList } from "../../data/index";
 
 export default function Chats() {
   const theme = useTheme();
   const isDesktop = useResponsive("up", "md");
-
-  const { conversations } = useSelector((state) => state.conversation.direct_chat);
 
   return (
     <>
@@ -88,7 +87,9 @@ export default function Chats() {
                 <Typography variant="subtitle2" sx={{ color: "#676667" }}>
                   All Chats
                 </Typography>
-                <ChatElement />
+                {ChatList.map((el, index) => {
+                  return <ChatElement {...el} />;
+                })}
               </Stack>
             </SimpleBarStyle>
           </Stack>

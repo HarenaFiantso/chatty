@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { faker } from "@faker-js/faker";
-import { AWS_S3_REGION, S3_BUCKET_NAME } from "../../config";
+// import { AWS_S3_REGION, S3_BUCKET_NAME } from "../../config";
 
 const user_id = window.localStorage.getItem("user_id");
 
