@@ -1,3 +1,12 @@
+import { Stack } from "@mui/material";
+import Chats from "./Chats";
+
 export default function MainApp() {
-  return <div>Test kely</div>;
+  return (
+    <>
+      <Stack direction="row" sx={{ width: "100%" }}>
+        <Chats />
+      </Stack>
+    </>
+  );
 }
