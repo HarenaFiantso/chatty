@@ -22,10 +22,13 @@ import {
 } from "../../components/search";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import ChatElement from "../../components/ChatElement";
+import { useSelector } from "react-redux";
 
 export default function Chats() {
   const theme = useTheme();
   const isDesktop = useResponsive("up", "md");
+
+  const { conversations } = useSelector((state) => state.conversation.direct_chat);
 
   return (
     <>
