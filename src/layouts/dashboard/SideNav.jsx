@@ -1,7 +1,8 @@
-import { Box, IconButton, Stack, useTheme } from "@mui/material";
+import { Box, Divider, IconButton, Stack, useTheme } from "@mui/material";
 
 import Logo from "../../assets/Images/chat.png";
-import { Nav_Buttons } from "../../data";
+import { Nav_Buttons, Nav_Setting } from "../../data";
+import { useDispatch } from "react-redux";
 
 export default function SideNav() {
   const theme = useTheme();
@@ -36,9 +37,25 @@ export default function SideNav() {
           >
             <img src={Logo} alt="Logo" />
           </Box>
-          {Nav_Buttons.map((el) => (
-            <IconButton key={el.index}>{el.icon}</IconButton>
-          ))}
+          <Stack
+            sx={{ width: "max-content" }}
+            direction="column"
+            alignItems="center"
+            spacing={3}
+          >
+            {Nav_Buttons.map((el) => (
+              <IconButton key={el.index} sx={{ width: "max-content" }}>
+                {el.icon}
+              </IconButton>
+            ))}
+
+            <Divider sx={{ width: 48 }} />
+            {Nav_Setting.map((el) => (
+              <IconButton key={el.index} sx={{ width: "max-content" }}>
+                {el.icon}
+              </IconButton>
+            ))}
+          </Stack>
         </Stack>
       </Stack>
     </Box>
