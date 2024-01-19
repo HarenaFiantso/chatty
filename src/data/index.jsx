@@ -50,7 +50,7 @@ const CallList = [
   {
     id: 0,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -58,7 +58,7 @@ const CallList = [
   {
     id: 1,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: false,
     missed: true,
@@ -66,7 +66,7 @@ const CallList = [
   {
     id: 2,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: true,
     missed: true,
@@ -74,7 +74,7 @@ const CallList = [
   {
     id: 3,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: false,
     missed: false,
@@ -82,7 +82,7 @@ const CallList = [
   {
     id: 4,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -90,7 +90,7 @@ const CallList = [
   {
     id: 5,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: false,
     missed: false,
@@ -98,7 +98,7 @@ const CallList = [
   {
     id: 6,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -106,7 +106,7 @@ const CallList = [
   {
     id: 7,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: false,
     missed: false,
@@ -114,7 +114,7 @@ const CallList = [
   {
     id: 8,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -122,7 +122,7 @@ const CallList = [
   {
     id: 9,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: false,
     missed: false,
@@ -130,7 +130,7 @@ const CallList = [
   {
     id: 10,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -138,7 +138,7 @@ const CallList = [
   {
     id: 11,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: false,
     incoming: false,
     missed: false,
@@ -146,7 +146,7 @@ const CallList = [
   {
     id: 12,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     online: true,
     incoming: true,
     missed: false,
@@ -157,7 +157,7 @@ const ChatList = [
   {
     id: 0,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "9:36",
     unread: 0,
@@ -167,7 +167,7 @@ const ChatList = [
   {
     id: 1,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "12:02",
     unread: 2,
@@ -177,7 +177,7 @@ const ChatList = [
   {
     id: 2,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "10:35",
     unread: 3,
@@ -187,7 +187,7 @@ const ChatList = [
   {
     id: 3,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "04:00",
     unread: 0,
@@ -197,7 +197,7 @@ const ChatList = [
   {
     id: 4,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "08:42",
     unread: 0,
@@ -207,7 +207,7 @@ const ChatList = [
   {
     id: 5,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "08:42",
     unread: 0,
@@ -217,7 +217,7 @@ const ChatList = [
   {
     id: 6,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "08:42",
     unread: 0,
@@ -227,7 +227,7 @@ const ChatList = [
   {
     id: 7,
     img: faker.image.avatar(),
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     msg: faker.music.songName(),
     time: "08:42",
     unread: 0,
@@ -270,7 +270,7 @@ const Chat_History = [
     type: "msg",
     subtype: "img",
     message: "Here You Go",
-    img: faker.image.abstract(),
+    img: faker.image.urlLoremFlickr({ category: 'abstract' }),
     incoming: true,
     outgoing: false,
   },
@@ -291,7 +291,7 @@ const Chat_History = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -390,7 +390,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -398,7 +398,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -406,7 +406,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -414,7 +414,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -422,7 +422,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,
@@ -430,7 +430,7 @@ const Shared_links = [
   {
     type: "msg",
     subtype: "link",
-    preview: faker.image.cats(),
+    preview: faker.image.urlLoremFlickr({ category: 'cats' }),
     message: "Yep, I can also do that",
     incoming: true,
     outgoing: false,

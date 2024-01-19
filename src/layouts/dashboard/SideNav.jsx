@@ -1,5 +1,10 @@
 import { Box, Stack, useTheme } from "@mui/material";
 
+import Logo from "../../assets/Images/logo.ico";
+import { Nav_Buttons } from "../../data";
+
+console.log(Nav_Buttons);
+
 export default function SideNav() {
   const theme = useTheme();
 
@@ -15,7 +20,33 @@ export default function SideNav() {
         boxShadow: "0px 0px 2px rgba(0, 0, 0, .25)",
       }}
     >
-      <Stack>Test</Stack>
+      <Stack
+        py={3}
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ height: "100%" }}
+      >
+        <Stack alignItems="center" spacing={4}>
+          <Box
+            sx={{
+              height: 64,
+              width: 64,
+              borderRadius: 1.5,
+              backgroundColor: theme.palette.primary.main,
+            }}
+            p={1}
+          >
+            <img src={Logo} alt="Logo" />
+          </Box>
+
+          <Stack
+            sx={{ width: "max-content" }}
+            direction="column"
+            alignItems="center"
+            spacing={3}
+          ></Stack>
+        </Stack>
+      </Stack>
     </Box>
   );
 }
