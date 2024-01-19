@@ -22,12 +22,20 @@ import {
 } from "../../components/search";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import ChatElement from "../../components/ChatElement";
-import { useSelector } from "react-redux";
 import { ChatList } from "../../data/index";
+import { useState } from "react";
 
 export default function Chats() {
   const theme = useTheme();
   const isDesktop = useResponsive("up", "md");
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
 
   return (
     <>
@@ -53,7 +61,12 @@ export default function Chats() {
             <Typography variant="h5">Chats</Typography>
 
             <Stack direction="row" alignItems="center" spacing={1}>
-              <IconButton sx={{ width: "max-content" }}>
+              <IconButton
+                sx={{ width: "max-content" }}
+                onClick={() => {
+                  handleOpenDialog();
+                }}
+              >
                 <Users />
               </IconButton>
               <IconButton sx={{ width: "max-content" }}>
@@ -88,13 +101,16 @@ export default function Chats() {
                   All Chats
                 </Typography>
                 {ChatList.map((el, index) => {
-                  return <ChatElement {...el} />;
+                  return <ChatElement key={index} {...el} />;
                 })}
               </Stack>
             </SimpleBarStyle>
           </Stack>
         </Stack>
       </Box>
+      {openDialog && (
+        <Friends open={openDialog} handleClose={handleCloseDialog} />
+      )}
     </>
   );
 }
