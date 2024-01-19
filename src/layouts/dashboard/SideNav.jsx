@@ -2,10 +2,11 @@ import { Box, Divider, IconButton, Stack, useTheme } from "@mui/material";
 
 import Logo from "../../assets/Images/chat.png";
 import { Nav_Buttons, Nav_Setting } from "../../data";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function SideNav() {
   const theme = useTheme();
+  const [selected, setSelected] = useState(0);
 
   return (
     <Box
@@ -43,18 +44,64 @@ export default function SideNav() {
             alignItems="center"
             spacing={3}
           >
-            {Nav_Buttons.map((el) => (
-              <IconButton key={el.index} sx={{ width: "max-content" }}>
-                {el.icon}
-              </IconButton>
-            ))}
+            {Nav_Buttons.map((el) =>
+              el.index === selected ? (
+                <Box
+                  sx={{
+                    backgroundColor: theme.palette.primary.main,
+                    borderRadius: 1.5,
+                  }}
+                >
+                  <IconButton
+                    key={el.index}
+                    sx={{ width: "max-content", color: "white" }}
+                  >
+                    {el.icon}
+                  </IconButton>
+                </Box>
+              ) : (
+                <IconButton
+                  key={el.index}
+                  sx={{ width: "max-content", color: "black" }}
+                  onClick={() => {
+                    setSelected(el.index);
+                  }}
+                >
+                  {el.icon}
+                </IconButton>
+              )
+            )}
 
             <Divider sx={{ width: 48 }} />
-            {Nav_Setting.map((el) => (
-              <IconButton key={el.index} sx={{ width: "max-content" }}>
-                {el.icon}
-              </IconButton>
-            ))}
+            {selected === 3 ? (
+              <Box
+                sx={{
+                  backgroundColor: theme.palette.primary.main,
+                  borderRadius: 1.5,
+                }}
+              >
+                {Nav_Setting.map((el) => (
+                  <IconButton
+                    key={el.index}
+                    sx={{ width: "max-content", color: "white" }}
+                  >
+                    {el.icon}
+                  </IconButton>
+                ))}
+              </Box>
+            ) : (
+              Nav_Setting.map((el) => (
+                <IconButton
+                  key={el.index}
+                  sx={{ width: "max-content", color: "black" }}
+                  onClick={() => {
+                    setSelected(el.index);
+                  }}
+                >
+                  {el.icon}
+                </IconButton>
+              ))
+            )}
           </Stack>
         </Stack>
       </Stack>
