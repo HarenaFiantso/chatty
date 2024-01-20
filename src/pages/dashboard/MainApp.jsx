@@ -29,8 +29,8 @@ export default function MainApp() {
                 : "6px solid #0162C4",
           }}
         >
-          {/* <ChatComponent /> */}
-          <Stack
+          <ChatComponent />
+          {/* <Stack
             spacing={2}
             sx={{ height: "100%", width: "100%" }}
             alignItems="center"
@@ -49,7 +49,7 @@ export default function MainApp() {
                 new one
               </Link>
             </Typography>
-          </Stack>
+          </Stack> */}
         </Box>
       </Stack>
     </>

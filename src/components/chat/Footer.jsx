@@ -156,7 +156,7 @@ function containsUrl(text) {
   return urlRegex.test(text);
 }
 
-export function Footer() {
+export default function Footer() {
   const theme = useTheme();
 
   const { current_conversation } = useSelector(
@@ -187,7 +187,6 @@ export function Footer() {
           value.substring(selectionEnd)
       );
 
-      // Move the cursor to the end of the inserted emoji
       input.selectionStart = input.selectionEnd = selectionStart + 1;
     }
   }
@@ -229,7 +228,6 @@ export function Footer() {
                 }}
               />
             </Box>
-            {/* Chat Input */}
             <ChatInput
               inputRef={inputRef}
               value={value}

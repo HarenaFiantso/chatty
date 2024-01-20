@@ -1,7 +1,55 @@
 import { Avatar, Box, Stack, useTheme } from "@mui/material";
 import ChatHeader from "../../components/chat/Header";
+import ChatFooter from "../../components/chat/Footer";
 import useResponsive from "../../hooks/useResponsive";
 import { SimpleBarStyle } from "../../components/Scrollbar";
+import {
+  DocMsg,
+  LinkMsg,
+  MediaMsg,
+  ReplyMsg,
+  TextMsg,
+  Timeline,
+} from "../../sections/dashboard/Conversation";
+import { useDispatch, useSelector } from "react-redux";
+
+const Conversation = ({ isMobile, menu }) => {
+  const dispatch = useDispatch();
+
+  const { conversations, current_messages } = useSelector(
+    (state) => state.conversation.direct_chat
+  );
+  const { room_id } = useSelector((state) => state.app);
+
+  return (
+    <Box p={isMobile ? 1 : 3}>
+      <Stack spacing={3}>
+        {current_messages.map((el, idx) => {
+          switch (el.type) {
+            case "divider":
+              return <Timeline el={el} />;
+            case "msg":
+              switch (el.subtype) {
+                case "img":
+                  return <MediaMsg el={el} menu={menu} />;
+                case "doc":
+                  return <DocMsg el={el} menu={menu} />;
+                case "Link":
+                  return <LinkMsg el={el} menu={menu} />;
+                case "reply":
+                  return <ReplyMsg el={el} menu={menu} />;
+                default:
+                  return <TextMsg el={el} menu={menu} />;
+              }
+
+            default:
+              return <></>;
+          }
+        })}
+      </Stack>
+    </Box>
+  );
+};
 
 export default function ChatComponents() {
   const isMobile = useResponsive("between", "md", "xs", "sm");
@@ -24,9 +72,10 @@ export default function ChatComponents() {
         }}
       >
         <SimpleBarStyle timeout={500} clickOnTrack={false}>
-
+          <Conversation menu={true} isMobile={isMobile} />
         </SimpleBarStyle>
       </Box>
+      <ChatFooter />
     </Stack>
   );
 }
