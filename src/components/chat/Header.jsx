@@ -17,8 +17,8 @@ import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from "phosphor-react";
 import useResponsive from "../../hooks/useResponsive";
 import { ToggleSidebar } from "../../redux/slices/app";
 import { useDispatch, useSelector } from "react-redux";
-import { StartAudioCall } from "../../redux/slices/audioCall";
-import { StartVideoCall } from "../../redux/slices/videoCall";
+// import { StartAudioCall } from "../../redux/slices/audioCall";
+// import { StartVideoCall } from "../../redux/slices/videoCall";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -64,7 +64,7 @@ const Conversation_Menu = [
   },
 ];
 
-export function ChatHeader() {
+export default function ChatHeader() {
   const dispatch = useDispatch();
   const isMobile = useResponsive("between", "md", "xs", "sm");
   const theme = useTheme();
@@ -126,7 +126,8 @@ export function ChatHeader() {
             </Box>
             <Stack spacing={0.2}>
               <Typography variant="subtitle2">
-                {current_conversation?.name}
+                Fiantso Harena
+                {/*current_conversation?.name*/}
               </Typography>
               <Typography variant="caption">Online</Typography>
             </Stack>
@@ -191,7 +192,7 @@ export function ChatHeader() {
               <Box p={1}>
                 <Stack spacing={1}>
                   {Conversation_Menu.map((el) => (
-                    <MenuItem onClick={handleCloseConversationMenu}>
+                    <MenuItem onClick={handleCloseConversationMenu} key={el.index}>
                       <Stack
                         sx={{ minWidth: 100 }}
                         direction="row"
@@ -199,7 +200,7 @@ export function ChatHeader() {
                         justifyContent="space-between"
                       >
                         <span>{el.title}</span>
-                      </Stack>{" "}
+                      </Stack>
                     </MenuItem>
                   ))}
                 </Stack>

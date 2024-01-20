@@ -23,7 +23,7 @@ import useResponsive from "../../hooks/useResponsive";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import { socket } from "../../socket";
+// import { socket } from "../../socket";
 import { useSelector } from "react-redux";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
