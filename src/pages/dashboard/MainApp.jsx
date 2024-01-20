@@ -1,8 +1,9 @@
-import { Box, Stack, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Chats from "./Chats";
-import Conversation from "./Conversation";
+import ChatComponent from "./Conversation";
+import NoChat from "../../assets/Illustration/NoChat";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function MainApp() {
   const { sideBar, room_id, chat_type } = useSelector((state) => state.app);
@@ -28,7 +29,27 @@ export default function MainApp() {
                 : "6px solid #0162C4",
           }}
         >
-          <Conversation />
+          {/* <ChatComponent /> */}
+          <Stack
+            spacing={2}
+            sx={{ height: "100%", width: "100%" }}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <NoChat />
+            <Typography variant="subtitle2">
+              Select a conversation or start a{" "}
+              <Link
+                style={{
+                  color: theme.palette.primary.main,
+                  textDecoration: "none",
+                }}
+                to="/"
+              >
+                new one
+              </Link>
+            </Typography>
+          </Stack>
         </Box>
       </Stack>
     </>
