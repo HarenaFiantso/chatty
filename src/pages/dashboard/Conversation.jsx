@@ -53,6 +53,7 @@ export default function ChatComponents() {
   return (
     <Stack height="100%" maxHeight="100vh" width={isMobile ? '100vw' : 'auto'}>
       <ChatHeader />
+      
       <Box
         width="100%"
         sx={{
@@ -67,6 +68,7 @@ export default function ChatComponents() {
           <Conversation menu={true} isMobile={isMobile} />
         </SimpleBarStyle>
       </Box>
+
       <ChatFooter />
     </Stack>
   );

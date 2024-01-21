@@ -2,9 +2,9 @@ import { Box, Button, Divider, IconButton, Stack, Typography, useTheme } from '@
 import { ArchiveBox, CircleDashed, MagnifyingGlass, Users } from 'phosphor-react';
 import { useState } from 'react';
 
-import { ChatList } from '../../data/index';
-
 import BottomNav from '../../layouts/dashboard/BottomNav';
+
+import { useSelector } from 'react-redux';
 
 import Friends from '../../sections/dashboard/Friends';
 
@@ -25,6 +25,8 @@ export default function Chats() {
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
+
+  const { conversations } = useSelector((state) => state.conversation.direct_chat);
 
   return (
     <>
@@ -73,22 +75,34 @@ export default function Chats() {
             </Stack>
             <Divider />
           </Stack>
+
           <Stack sx={{ flexGrow: 1, overflow: 'scroll', height: '100%' }}>
             <SimpleBarStyle timeout={500} clickOnTrack={false}>
               <Stack spacing={2.4}>
                 <Typography variant="subtitle2" sx={{ color: '#676667' }}>
+                  Pinned
+                </Typography>
+                {conversations
+                  .filter((el) => el.pinned)
+                  .map((el, idx) => {
+                    return <ChatElement key={idx} {...el} />;
+                  })}
+                <Divider />
+                <Typography variant="subtitle2" sx={{ color: '#676667' }}>
                   All Chats
                 </Typography>
-                {ChatList.map((el, index) => {
-                  return <ChatElement key={index} {...el} />;
-                })}
+                {conversations
+                  .filter((el) => !el.pinned)
+                  .map((el, idx) => {
+                    return <ChatElement {...el} />;
+                  })}
               </Stack>
             </SimpleBarStyle>
           </Stack>
         </Stack>
       </Box>
 
-      {/* Coming soon */}
+      {openDialog && <Friends open={openDialog} handleClose={handleCloseDialog} />}
     </>
   );
 }
