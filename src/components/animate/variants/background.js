@@ -53,8 +53,6 @@ export const varBgKenburns = (props) => {
   };
 };
 
-// ----------------------------------------------------------------------
-
 export const varBgPan = (props) => {
   const colors = props?.colors || ["#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"];
   const duration = props?.duration || 5;
