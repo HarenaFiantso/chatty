@@ -1,12 +1,15 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
-import Chats from "./Chats";
-import ChatComponent from "./Conversation";
-import NoChat from "../../assets/Illustration/NoChat";
-import { useSelector } from "react-redux";
-import { Link, useSearchParams } from "react-router-dom";
-import Contact from "../../sections/dashboard/Contact";
-import StarredMessages from "../../sections/dashboard/StarredMessages";
-import Media from "../../sections/dashboard/Media";
+import Chats from './Chats';
+import ChatComponent from './Conversation';
+import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { Link, useSearchParams } from 'react-router-dom';
+
+import NoChat from '../../assets/Illustration/NoChat';
+
+import { useSelector } from 'react-redux';
+
+import Contact from '../../sections/dashboard/Contact';
+import Media from '../../sections/dashboard/Media';
+import StarredMessages from '../../sections/dashboard/StarredMessages';
 
 export default function MainApp() {
   const { sideBar, room_id, chat_type } = useSelector((state) => state.app);
@@ -15,39 +18,28 @@ export default function MainApp() {
 
   return (
     <>
-      <Stack direction="row" sx={{ width: "100%" }}>
+      <Stack direction="row" sx={{ width: '100%' }}>
         <Chats />
         <Box
           sx={{
-            height: "100%",
+            height: '100%',
             width: sideBar.open ? `calc(100vw - 720px)` : `calc(100vw - 420px)`,
-            backgroundColor:
-              theme.palette.mode === "light"
-                ? "white"
-                : theme.palette.background.paper,
+            backgroundColor: theme.palette.mode === 'light' ? 'white' : theme.palette.background.paper,
             borderBottom:
-              searchParams.get("type") === "individual-chat" &&
-              searchParams.get("id")
-                ? "0px"
-                : "6px solid #0162C4",
+              searchParams.get('type') === 'individual-chat' && searchParams.get('id') ? '0px' : '6px solid #0162C4',
           }}
         >
-          {chat_type === "individual" && room_id !== null ? (
+          {chat_type === 'individual' && room_id !== null ? (
             <ChatComponent />
           ) : (
-            <Stack
-              spacing={2}
-              sx={{ height: "100%", width: "100%" }}
-              alignItems="center"
-              justifyContent="center"
-            >
+            <Stack spacing={2} sx={{ height: '100%', width: '100%' }} alignItems="center" justifyContent="center">
               <NoChat />
               <Typography variant="subtitle2">
-                Select a conversation or start a{" "}
+                Select a conversation or start a{' '}
                 <Link
                   style={{
                     color: theme.palette.primary.main,
-                    textDecoration: "none",
+                    textDecoration: 'none',
                   }}
                   to="/"
                 >
@@ -60,13 +52,13 @@ export default function MainApp() {
         {sideBar.open &&
           (() => {
             switch (sideBar.type) {
-              case "CONTACT":
+              case 'CONTACT':
                 return <Contact />;
 
-              case "STARRED":
+              case 'STARRED':
                 return <StarredMessages />;
 
-              case "SHARED":
+              case 'SHARED':
                 return <Media />;
 
               default:

@@ -1,10 +1,11 @@
-import { Stack } from "@mui/material";
-import SideNav from "./SideNav";
-import useResponsive from "../../hooks/useResponsive";
-import { Outlet } from "react-router-dom";
+import SideNav from './SideNav';
+import { Stack } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+
+import useResponsive from '../../hooks/useResponsive';
 
 export default function DashboardLayout() {
-  const isDesktop = useResponsive("up", "md");
+  const isDesktop = useResponsive('up', 'md');
 
   return (
     <Stack direction="row">

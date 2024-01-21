@@ -5,9 +5,9 @@ export default function Menu(theme) {
         root: {
           fontSize: 14,
           fontWeight: 600,
-          "&.Mui-selected": {
+          '&.Mui-selected': {
             backgroundColor: theme.palette.action.selected,
-            "&:hover": {
+            '&:hover': {
               backgroundColor: theme.palette.action.hover,
             },
           },

@@ -1,34 +1,31 @@
-import {
-  Avatar,
-  Box,
-  Divider,
-  IconButton,
-  Stack,
-  useTheme,
-} from "@mui/material";
+import { Avatar, Box, Divider, IconButton, Stack, useTheme } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import Logo from "../../assets/Images/chat.png";
-import AntSwitch from "../../components/AntSwitch";
-import useSettings from "../../hooks/useSettings";
-import { Nav_Buttons, Nav_Setting } from "../../data";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { UpdateTab } from "../../redux/slices/app";
+import Logo from '../../assets/Images/chat.png';
+
+import { UpdateTab } from '../../redux/slices/app';
+import { useDispatch, useSelector } from 'react-redux';
+
+import useSettings from '../../hooks/useSettings';
+
+import AntSwitch from '../../components/AntSwitch';
+
+import { Nav_Buttons, Nav_Setting } from '../../data';
 
 const getPath = (index) => {
   switch (index) {
     case 0:
-      return "/app";
+      return '/app';
 
     case 1:
-      return "/group";
+      return '/group';
 
     case 2:
-      return "/call";
+      return '/call';
 
     case 3:
-      return "/settings";
+      return '/settings';
 
     default:
       break;
@@ -51,21 +48,13 @@ export default function SideNav() {
   return (
     <Box
       sx={{
-        height: "100vh",
+        height: '100vh',
         width: 100,
-        backgroundColor:
-          theme.palette.mode === "light"
-            ? "#F0F4FA"
-            : theme.palette.background.paper,
-        boxShadow: "0px 0px 2px rgba(0, 0, 0, .25)",
+        backgroundColor: theme.palette.mode === 'light' ? '#F0F4FA' : theme.palette.background.paper,
+        boxShadow: '0px 0px 2px rgba(0, 0, 0, .25)',
       }}
     >
-      <Stack
-        py={3}
-        alignItems="center"
-        justifyContent="space-between"
-        sx={{ height: "100%" }}
-      >
+      <Stack py={3} alignItems="center" justifyContent="space-between" sx={{ height: '100%' }}>
         <Stack alignItems="center" spacing={4}>
           <Box
             sx={{
@@ -78,12 +67,7 @@ export default function SideNav() {
           >
             <img src={Logo} alt="Logo" />
           </Box>
-          <Stack
-            sx={{ width: "max-content" }}
-            direction="column"
-            alignItems="center"
-            spacing={3}
-          >
+          <Stack sx={{ width: 'max-content' }} direction="column" alignItems="center" spacing={3}>
             {Nav_Buttons.map((el) =>
               el.index === selectedTab ? (
                 <Box
@@ -97,7 +81,7 @@ export default function SideNav() {
                     onClick={() => {
                       handleChangeTab(el.index);
                     }}
-                    sx={{ width: "max-content", color: "#FFF" }}
+                    sx={{ width: 'max-content', color: '#FFF' }}
                   >
                     {el.icon}
                   </IconButton>
@@ -106,11 +90,8 @@ export default function SideNav() {
                 <IconButton
                   key={el.index}
                   sx={{
-                    width: "max-content",
-                    color:
-                      theme.palette.mode === "light"
-                        ? "#080707"
-                        : theme.palette.text.primary,
+                    width: 'max-content',
+                    color: theme.palette.mode === 'light' ? '#080707' : theme.palette.text.primary,
                   }}
                   onClick={() => {
                     handleChangeTab(el.index);
@@ -135,7 +116,7 @@ export default function SideNav() {
                     onClick={() => {
                       handleChangeTab(el.index);
                     }}
-                    sx={{ width: "max-content", color: "#ffffff" }}
+                    sx={{ width: 'max-content', color: '#ffffff' }}
                   >
                     {el.icon}
                   </IconButton>
@@ -148,11 +129,8 @@ export default function SideNav() {
                     // dispatch(UpdateTab(el.index));
                   }}
                   sx={{
-                    width: "max-content",
-                    color:
-                      theme.palette.mode === "light"
-                        ? "#080707"
-                        : theme.palette.text.primary,
+                    width: 'max-content',
+                    color: theme.palette.mode === 'light' ? '#080707' : theme.palette.text.primary,
                   }}
                 >
                   {el.icon}
@@ -163,10 +141,7 @@ export default function SideNav() {
         </Stack>
 
         <Stack spacing={4}>
-          <AntSwitch
-            defaultChecked={theme.palette.mode === "light"}
-            onChange={onToggleMode}
-          />
+          <AntSwitch defaultChecked={theme.palette.mode === 'light'} onChange={onToggleMode} />
           <Avatar />
         </Stack>
       </Stack>

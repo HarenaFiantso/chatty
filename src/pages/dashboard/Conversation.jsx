@@ -1,24 +1,19 @@
-import { Avatar, Box, Stack, useTheme } from "@mui/material";
-import ChatHeader from "../../components/chat/Header";
-import ChatFooter from "../../components/chat/Footer";
-import useResponsive from "../../hooks/useResponsive";
-import { SimpleBarStyle } from "../../components/Scrollbar";
-import {
-  DocMsg,
-  LinkMsg,
-  MediaMsg,
-  ReplyMsg,
-  TextMsg,
-  Timeline,
-} from "../../sections/dashboard/Conversation";
-import { useDispatch, useSelector } from "react-redux";
+import { Avatar, Box, Stack, useTheme } from '@mui/material';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { DocMsg, LinkMsg, MediaMsg, ReplyMsg, TextMsg, Timeline } from '../../sections/dashboard/Conversation';
+
+import useResponsive from '../../hooks/useResponsive';
+
+import { SimpleBarStyle } from '../../components/Scrollbar';
+import ChatFooter from '../../components/chat/Footer';
+import ChatHeader from '../../components/chat/Header';
 
 const Conversation = ({ isMobile, menu }) => {
   const dispatch = useDispatch();
 
-  const { conversations, current_messages } = useSelector(
-    (state) => state.conversation.direct_chat
-  );
+  const { conversations, current_messages } = useSelector((state) => state.conversation.direct_chat);
   const { room_id } = useSelector((state) => state.app);
 
   return (
@@ -26,17 +21,17 @@ const Conversation = ({ isMobile, menu }) => {
       <Stack spacing={3}>
         {current_messages.map((el, idx) => {
           switch (el.type) {
-            case "divider":
+            case 'divider':
               return <Timeline el={el} />;
-            case "msg":
+            case 'msg':
               switch (el.subtype) {
-                case "img":
+                case 'img':
                   return <MediaMsg el={el} menu={menu} />;
-                case "doc":
+                case 'doc':
                   return <DocMsg el={el} menu={menu} />;
-                case "Link":
+                case 'Link':
                   return <LinkMsg el={el} menu={menu} />;
-                case "reply":
+                case 'reply':
                   return <ReplyMsg el={el} menu={menu} />;
                 default:
                   return <TextMsg el={el} menu={menu} />;
@@ -52,23 +47,20 @@ const Conversation = ({ isMobile, menu }) => {
 };
 
 export default function ChatComponents() {
-  const isMobile = useResponsive("between", "md", "xs", "sm");
+  const isMobile = useResponsive('between', 'md', 'xs', 'sm');
   const theme = useTheme();
 
   return (
-    <Stack height="100%" maxHeight="100vh" width={isMobile ? "100vw" : "auto"}>
+    <Stack height="100%" maxHeight="100vh" width={isMobile ? '100vw' : 'auto'}>
       <ChatHeader />
       <Box
         width="100%"
         sx={{
-          position: "relative",
+          position: 'relative',
           flexGrow: 1,
-          overflow: "scroll",
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? "#F0F4FA"
-              : theme.palette.background,
-          boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
+          overflow: 'scroll',
+          backgroundColor: theme.palette.mode === 'light' ? '#F0F4FA' : theme.palette.background,
+          boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
         }}
       >
         <SimpleBarStyle timeout={500} clickOnTrack={false}>

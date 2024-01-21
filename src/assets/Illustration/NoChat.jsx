@@ -1,6 +1,6 @@
-import { memo } from "react";
-import { useTheme } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { memo } from 'react';
 
 export default function NoChat({ ...other }) {
   const theme = useTheme();
@@ -9,13 +9,7 @@ export default function NoChat({ ...other }) {
 
   return (
     <Box {...other}>
-      <svg
-        width="360"
-        height="360"
-        viewBox="0 0 750 750"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="360" height="360" viewBox="0 0 750 750" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -100,10 +94,7 @@ export default function NoChat({ ...other }) {
           d="M303.399 287.511C309.746 290.158 314.567 293.596 315.846 292.166C317.124 290.736 312.764 286.382 309.377 280.468C305.831 274.588 302.463 267.18 301.833 264.166L300.221 256.549C295.505 262.5 291.089 282.468 303.399 287.511Z"
           fill="white"
         />
-        <path
-          d="M377.188 651.122L376.844 672.303H364.796L361.188 648L377.188 651.122Z"
-          fill="white"
-        />
+        <path d="M377.188 651.122L376.844 672.303H364.796L361.188 648L377.188 651.122Z" fill="white" />
         <path
           d="M245.24 538.488C245.24 538.488 323.413 536.762 347.987 533.217C375.267 529.282 390.185 519.983 396.118 521.082C398.898 521.597 415.307 524.505 449.546 528.147C464.027 529.687 501.616 529.923 501.616 529.923L516.205 498.872C516.205 498.872 413.541 478.26 381.082 487.181C370.872 489.987 348.763 494.037 322.476 492.558C299.745 491.279 237.923 479.272 237.923 479.272C237.923 479.272 212.962 488.232 217.48 510.267C221.998 532.301 245.24 538.488 245.24 538.488Z"
           fill="white"

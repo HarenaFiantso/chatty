@@ -1,34 +1,22 @@
-import {
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import useResponsive from "../../hooks/useResponsive";
-import BottomNav from "../../layouts/dashboard/BottomNav";
-import {
-  ArchiveBox,
-  CircleDashed,
-  MagnifyingGlass,
-  Users,
-} from "phosphor-react";
-import {
-  Search,
-  SearchIconWrapper,
-  StyledInputBase,
-} from "../../components/search";
-import { SimpleBarStyle } from "../../components/Scrollbar";
-import ChatElement from "../../components/ChatElement";
-import Friends from "../../sections/dashboard/Friends";
-import { ChatList } from "../../data/index";
-import { useState } from "react";
+import { Box, Button, Divider, IconButton, Stack, Typography, useTheme } from '@mui/material';
+import { ArchiveBox, CircleDashed, MagnifyingGlass, Users } from 'phosphor-react';
+import { useState } from 'react';
+
+import { ChatList } from '../../data/index';
+
+import BottomNav from '../../layouts/dashboard/BottomNav';
+
+import Friends from '../../sections/dashboard/Friends';
+
+import useResponsive from '../../hooks/useResponsive';
+
+import ChatElement from '../../components/ChatElement';
+import { SimpleBarStyle } from '../../components/Scrollbar';
+import { Search, SearchIconWrapper, StyledInputBase } from '../../components/search';
 
 export default function Chats() {
   const theme = useTheme();
-  const isDesktop = useResponsive("up", "md");
+  const isDesktop = useResponsive('up', 'md');
 
   const [openDialog, setOpenDialog] = useState(false);
   const handleCloseDialog = () => {
@@ -42,49 +30,39 @@ export default function Chats() {
     <>
       <Box
         sx={{
-          position: "relative",
-          height: "100%",
-          width: isDesktop ? 320 : "100vw",
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? "#F8FAFF"
-              : theme.palette.background,
-          boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
+          position: 'relative',
+          height: '100%',
+          width: isDesktop ? 320 : '100vw',
+          backgroundColor: theme.palette.mode === 'light' ? '#F8FAFF' : theme.palette.background,
+          boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.25)',
         }}
       >
         {!isDesktop && <BottomNav />}
-        <Stack p={3} spacing={3} sx={{ maxHeight: "100vh" }}>
-          <Stack
-            alignItems="center"
-            justifyContent="space-between"
-            direction="row"
-          >
+        <Stack p={3} spacing={3} sx={{ maxHeight: '100vh' }}>
+          <Stack alignItems="center" justifyContent="space-between" direction="row">
             <Typography variant="h5">Chats</Typography>
 
             <Stack direction="row" alignItems="center" spacing={1}>
               <IconButton
-                sx={{ width: "max-content" }}
+                sx={{ width: 'max-content' }}
                 onClick={() => {
                   handleOpenDialog();
                 }}
               >
                 <Users />
               </IconButton>
-              <IconButton sx={{ width: "max-content" }}>
+              <IconButton sx={{ width: 'max-content' }}>
                 <CircleDashed />
               </IconButton>
             </Stack>
           </Stack>
 
-          <Stack sx={{ width: "100%" }}>
+          <Stack sx={{ width: '100%' }}>
             <Search>
               <SearchIconWrapper>
                 <MagnifyingGlass color="#709CE6" />
               </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
+              <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
             </Search>
           </Stack>
 
@@ -95,10 +73,10 @@ export default function Chats() {
             </Stack>
             <Divider />
           </Stack>
-          <Stack sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}>
+          <Stack sx={{ flexGrow: 1, overflow: 'scroll', height: '100%' }}>
             <SimpleBarStyle timeout={500} clickOnTrack={false}>
               <Stack spacing={2.4}>
-                <Typography variant="subtitle2" sx={{ color: "#676667" }}>
+                <Typography variant="subtitle2" sx={{ color: '#676667' }}>
                   All Chats
                 </Typography>
                 {ChatList.map((el, index) => {

@@ -1,4 +1,4 @@
-import { varTranEnter, varTranExit } from "./transition";
+import { varTranEnter, varTranExit } from './transition';
 
 export const varSlide = (props) => {
   const distance = props?.distance || 160;

@@ -1,22 +1,20 @@
-import { AnimatePresence, m } from "framer-motion";
-import { useState, useEffect } from "react";
-import { alpha, styled } from "@mui/material/styles";
-import {
-  Stack,
-  Divider,
-  Backdrop,
-  Typography,
-  IconButton,
-} from "@mui/material";
-import useSettings from "../../../hooks/useSettings";
-import cssStyles from "../../../utils/cssStyles";
-import { NAVBAR, defaultSettings } from "../../../config/config";
-import Iconify from "../../Iconify";
-import Scrollbar from "../../Scrollbar";
-import ToggleButton from "./ToggleButton";
-import SettingDirection from "./SettingDirection";
-import SettingFullscreen from "./SettingFullscreen";
-import SettingColorPresets from "./SettingColorPresets";
+import SettingColorPresets from './SettingColorPresets';
+import SettingDirection from './SettingDirection';
+import SettingFullscreen from './SettingFullscreen';
+import ToggleButton from './ToggleButton';
+import { Backdrop, Divider, IconButton, Stack, Typography } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+import { AnimatePresence, m } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+import { NAVBAR, defaultSettings } from '../../../config/config';
+
+import cssStyles from '../../../utils/cssStyles';
+
+import useSettings from '../../../hooks/useSettings';
+
+import Iconify from '../../Iconify';
+import Scrollbar from '../../Scrollbar';
 
 const RootStyle = styled(m.div)(({ theme }) => ({
   ...cssStyles(theme).bgBlur({
@@ -26,33 +24,24 @@ const RootStyle = styled(m.div)(({ theme }) => ({
   top: 0,
   right: 0,
   bottom: 0,
-  display: "flex",
-  position: "fixed",
-  overflow: "hidden",
+  display: 'flex',
+  position: 'fixed',
+  overflow: 'hidden',
   width: NAVBAR.BASE_WIDTH,
-  flexDirection: "column",
+  flexDirection: 'column',
   margin: theme.spacing(2),
   paddingBottom: theme.spacing(3),
   zIndex: theme.zIndex.drawer + 3,
   borderRadius: Number(theme.shape.borderRadius) * 1.5,
   boxShadow: `-24px 12px 32px -4px ${alpha(
-    theme.palette.mode === "light"
-      ? theme.palette.grey[500]
-      : theme.palette.common.black,
+    theme.palette.mode === 'light' ? theme.palette.grey[500] : theme.palette.common.black,
     0.16
   )}`,
 }));
 
 export default function SettingsDrawer() {
-  const {
-    themeMode,
-    themeLayout,
-    themeStretch,
-    themeContrast,
-    themeDirection,
-    themeColorPresets,
-    onResetSetting,
-  } = useSettings();
+  const { themeMode, themeLayout, themeStretch, themeContrast, themeDirection, themeColorPresets, onResetSetting } =
+    useSettings();
 
   const [open, setOpen] = useState(false);
 
@@ -66,9 +55,9 @@ export default function SettingsDrawer() {
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
   }, [open]);
 
@@ -86,43 +75,32 @@ export default function SettingsDrawer() {
         open={open}
         onClick={handleClose}
         sx={{
-          background: "transparent",
+          background: 'transparent',
           zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       />
 
-      {!open && (
-        <ToggleButton
-          open={open}
-          notDefault={notDefault}
-          onToggle={handleToggle}
-        />
-      )}
+      {!open && <ToggleButton open={open} notDefault={notDefault} onToggle={handleToggle} />}
 
       <AnimatePresence>
         {open && (
           <>
             <RootStyle>
-              <Stack
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ py: 2, pr: 1, pl: 2.5 }}
-              >
+              <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ py: 2, pr: 1, pl: 2.5 }}>
                 <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
                   Settings
                 </Typography>
 
                 <IconButton onClick={onResetSetting}>
-                  <Iconify icon={"ic:round-refresh"} width={20} height={20} />
+                  <Iconify icon={'ic:round-refresh'} width={20} height={20} />
                 </IconButton>
 
                 <IconButton onClick={handleClose}>
-                  <Iconify icon={"eva:close-fill"} width={20} height={20} />
+                  <Iconify icon={'eva:close-fill'} width={20} height={20} />
                 </IconButton>
               </Stack>
 
-              <Divider sx={{ borderStyle: "dashed" }} />
+              <Divider sx={{ borderStyle: 'dashed' }} />
 
               <Scrollbar sx={{ flexGrow: 1 }}>
                 <Stack spacing={3} sx={{ p: 3 }}>

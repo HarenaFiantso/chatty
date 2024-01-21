@@ -1,13 +1,14 @@
-import { alpha, styled } from "@mui/material/styles";
-import { Box, Grid, RadioGroup, CardActionArea } from "@mui/material";
-import useSettings from "../../../hooks/useSettings";
-import BoxMask from "./BoxMask";
+import BoxMask from './BoxMask';
+import { Box, CardActionArea, Grid, RadioGroup } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+
+import useSettings from '../../../hooks/useSettings';
 
 const BoxStyle = styled(CardActionArea)(({ theme }) => ({
   height: 48,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   color: theme.palette.text.disabled,
   border: `solid 1px ${theme.palette.grey[500_12]}`,
   borderRadius: Number(theme.shape.borderRadius) * 1.25,
@@ -17,11 +18,7 @@ export default function SettingColorPresets() {
   const { themeColorPresets, onChangeColor, colorOption } = useSettings();
 
   return (
-    <RadioGroup
-      name="themeColorPresets"
-      value={themeColorPresets}
-      onChange={onChangeColor}
-    >
+    <RadioGroup name="themeColorPresets" value={themeColorPresets} onChange={onChangeColor}>
       <Grid dir="ltr" container spacing={1.5}>
         {colorOption.map((color) => {
           const colorName = color.name;
@@ -43,15 +40,15 @@ export default function SettingColorPresets() {
                   sx={{
                     width: 24,
                     height: 14,
-                    borderRadius: "50%",
+                    borderRadius: '50%',
                     bgcolor: colorValue,
-                    transform: "rotate(-45deg)",
+                    transform: 'rotate(-45deg)',
                     transition: (theme) =>
-                      theme.transitions.create("all", {
+                      theme.transitions.create('all', {
                         easing: theme.transitions.easing.easeInOut,
                         duration: theme.transitions.duration.shorter,
                       }),
-                    ...(isSelected && { transform: "none" }),
+                    ...(isSelected && { transform: 'none' }),
                   }}
                 />
 

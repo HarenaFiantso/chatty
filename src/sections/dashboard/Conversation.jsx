@@ -1,20 +1,14 @@
-import React from "react";
-import {
-  Stack,
-  Box,
-  Typography,
-  Menu,
-  MenuItem,
-  IconButton,
-  Divider,
-} from "@mui/material";
-import { useTheme, alpha } from "@mui/material/styles";
-import { DotsThreeVertical, DownloadSimple, Image } from "phosphor-react";
-import { Message_options } from "../../data";
-import { Link } from "react-router-dom";
-import truncateString from "../../utils/truncate";
-import { LinkPreview } from "@dhaiwat10/react-link-preview";
-import Embed from "react-embed";
+import { LinkPreview } from '@dhaiwat10/react-link-preview';
+import { Box, Divider, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
+import { DotsThreeVertical, DownloadSimple, Image } from 'phosphor-react';
+import React from 'react';
+import Embed from 'react-embed';
+import { Link } from 'react-router-dom';
+
+import truncateString from '../../utils/truncate';
+
+import { Message_options } from '../../data';
 
 const MessageOption = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -30,9 +24,9 @@ const MessageOption = () => {
       <DotsThreeVertical
         size={20}
         id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
+        aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
+        aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       />
       <Menu
@@ -41,7 +35,7 @@ const MessageOption = () => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
         <Stack spacing={1} px={1}>
@@ -57,22 +51,17 @@ const MessageOption = () => {
 const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
+    <Stack direction="row" justifyContent={el.incoming ? 'start' : 'end'}>
       <Box
         px={1.5}
         py={1.5}
         sx={{
-          backgroundColor: el.incoming
-            ? alpha(theme.palette.background.default, 1)
-            : theme.palette.primary.main,
+          backgroundColor: el.incoming ? alpha(theme.palette.background.default, 1) : theme.palette.primary.main,
           borderRadius: 1.5,
-          width: "max-content",
+          width: 'max-content',
         }}
       >
-        <Typography
-          variant="body2"
-          color={el.incoming ? theme.palette.text : "#fff"}
-        >
+        <Typography variant="body2" color={el.incoming ? theme.palette.text : '#fff'}>
           {el.message}
         </Typography>
       </Box>
@@ -83,28 +72,19 @@ const TextMsg = ({ el, menu }) => {
 const MediaMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
+    <Stack direction="row" justifyContent={el.incoming ? 'start' : 'end'}>
       <Box
         px={1.5}
         py={1.5}
         sx={{
-          backgroundColor: el.incoming
-            ? alpha(theme.palette.background.default, 1)
-            : theme.palette.primary.main,
+          backgroundColor: el.incoming ? alpha(theme.palette.background.default, 1) : theme.palette.primary.main,
           borderRadius: 1.5,
-          width: "max-content",
+          width: 'max-content',
         }}
       >
         <Stack spacing={1}>
-          <img
-            src={el.img}
-            alt={el.message}
-            style={{ maxHeight: 210, borderRadius: "10px" }}
-          />
-          <Typography
-            variant="body2"
-            color={el.incoming ? theme.palette.text : "#fff"}
-          >
+          <img src={el.img} alt={el.message} style={{ maxHeight: 210, borderRadius: '10px' }} />
+          <Typography variant="body2" color={el.incoming ? theme.palette.text : '#fff'}>
             {el.message}
           </Typography>
         </Stack>
@@ -116,16 +96,14 @@ const MediaMsg = ({ el, menu }) => {
 const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
+    <Stack direction="row" justifyContent={el.incoming ? 'start' : 'end'}>
       <Box
         px={1.5}
         py={1.5}
         sx={{
-          backgroundColor: el.incoming
-            ? alpha(theme.palette.background.default, 1)
-            : theme.palette.primary.main,
+          backgroundColor: el.incoming ? alpha(theme.palette.background.default, 1) : theme.palette.primary.main,
           borderRadius: 1.5,
-          width: "max-content",
+          width: 'max-content',
         }}
       >
         <Stack spacing={2}>
@@ -145,10 +123,7 @@ const DocMsg = ({ el, menu }) => {
               <DownloadSimple />
             </IconButton>
           </Stack>
-          <Typography
-            variant="body2"
-            color={el.incoming ? theme.palette.text : "#fff"}
-          >
+          <Typography variant="body2" color={el.incoming ? theme.palette.text : '#fff'}>
             {el.message}
           </Typography>
         </Stack>
@@ -160,16 +135,14 @@ const DocMsg = ({ el, menu }) => {
 const LinkMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
+    <Stack direction="row" justifyContent={el.incoming ? 'start' : 'end'}>
       <Box
         px={1.5}
         py={1.5}
         sx={{
-          backgroundColor: el.incoming
-            ? alpha(theme.palette.background.default, 1)
-            : theme.palette.primary.main,
+          backgroundColor: el.incoming ? alpha(theme.palette.background.default, 1) : theme.palette.primary.main,
           borderRadius: 1.5,
-          width: "max-content",
+          width: 'max-content',
         }}
       >
         <Stack spacing={2}>
@@ -183,18 +156,11 @@ const LinkMsg = ({ el, menu }) => {
               borderRadius: 1,
             }}
           >
-            <Stack direction={"column"} spacing={2}>
-              <Embed
-                width="300px"
-                isDark
-                url={`https://youtu.be/xoWxBR34qLE`}
-              />
+            <Stack direction={'column'} spacing={2}>
+              <Embed width="300px" isDark url={`https://youtu.be/xoWxBR34qLE`} />
             </Stack>
           </Stack>
-          <Typography
-            variant="body2"
-            color={el.incoming ? theme.palette.text : "#fff"}
-          >
+          <Typography variant="body2" color={el.incoming ? theme.palette.text : '#fff'}>
             <div dangerouslySetInnerHTML={{ __html: el.message }}></div>
           </Typography>
         </Stack>
@@ -206,16 +172,14 @@ const LinkMsg = ({ el, menu }) => {
 const ReplyMsg = ({ el, menu }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
+    <Stack direction="row" justifyContent={el.incoming ? 'start' : 'end'}>
       <Box
         px={1.5}
         py={1.5}
         sx={{
-          backgroundColor: el.incoming
-            ? alpha(theme.palette.background.paper, 1)
-            : theme.palette.primary.main,
+          backgroundColor: el.incoming ? alpha(theme.palette.background.paper, 1) : theme.palette.primary.main,
           borderRadius: 1.5,
-          width: "max-content",
+          width: 'max-content',
         }}
       >
         <Stack spacing={2}>
@@ -234,10 +198,7 @@ const ReplyMsg = ({ el, menu }) => {
               {el.message}
             </Typography>
           </Stack>
-          <Typography
-            variant="body2"
-            color={el.incoming ? theme.palette.text : "#fff"}
-          >
+          <Typography variant="body2" color={el.incoming ? theme.palette.text : '#fff'}>
             {el.reply}
           </Typography>
         </Stack>
@@ -249,7 +210,7 @@ const ReplyMsg = ({ el, menu }) => {
 const Timeline = ({ el }) => {
   const theme = useTheme();
   return (
-    <Stack direction="row" alignItems={"center"} justifyContent="space-between">
+    <Stack direction="row" alignItems={'center'} justifyContent="space-between">
       <Divider width="46%" />
       <Typography variant="caption" sx={{ color: theme.palette.text }}>
         {el.text}

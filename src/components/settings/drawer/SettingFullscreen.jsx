@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { alpha } from "@mui/material/styles";
-import { Button } from "@mui/material";
-import Iconify from "../../Iconify";
+import { Button } from '@mui/material';
+import { alpha } from '@mui/material/styles';
+import { useState } from 'react';
+
+import Iconify from '../../Iconify';
 
 export default function SettingFullscreen() {
   const [fullscreen, setFullscreen] = useState(false);
@@ -21,25 +22,17 @@ export default function SettingFullscreen() {
       fullWidth
       size="large"
       variant="outlined"
-      color={fullscreen ? "primary" : "inherit"}
-      startIcon={
-        <Iconify
-          icon={fullscreen ? "ic:round-fullscreen-exit" : "ic:round-fullscreen"}
-        />
-      }
+      color={fullscreen ? 'primary' : 'inherit'}
+      startIcon={<Iconify icon={fullscreen ? 'ic:round-fullscreen-exit' : 'ic:round-fullscreen'} />}
       onClick={toggleFullScreen}
       sx={{
         fontSize: 14,
         ...(fullscreen && {
-          bgcolor: (theme) =>
-            alpha(
-              theme.palette.primary.main,
-              theme.palette.action.selectedOpacity
-            ),
+          bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
         }),
       }}
     >
-      {fullscreen ? "Exit Fullscreen" : "Fullscreen"}
+      {fullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
     </Button>
   );
 }

@@ -59,5 +59,4 @@ If you'd like to contribute to Chatty, please follow these steps:
    ```
 5. Open a pull request on the main repository.
 
-
 **Happy chatting! 🎈**

@@ -1,14 +1,16 @@
-import { styled } from "@mui/material/styles";
-import { Grid, RadioGroup, CardActionArea } from "@mui/material";
-import useSettings from "../../../hooks/useSettings";
-import Iconify from "../../Iconify";
-import BoxMask from "./BoxMask";
+import BoxMask from './BoxMask';
+import { CardActionArea, Grid, RadioGroup } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+import useSettings from '../../../hooks/useSettings';
+
+import Iconify from '../../Iconify';
 
 const BoxStyle = styled(CardActionArea)(({ theme }) => ({
   height: 72,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   color: theme.palette.text.disabled,
   border: `solid 1px ${theme.palette.grey[500_12]}`,
   borderRadius: Number(theme.shape.borderRadius) * 1.25,
@@ -18,13 +20,9 @@ export default function SettingDirection() {
   const { themeDirection, onChangeDirection } = useSettings();
 
   return (
-    <RadioGroup
-      name="themeDirection"
-      value={themeDirection}
-      onChange={onChangeDirection}
-    >
+    <RadioGroup name="themeDirection" value={themeDirection} onChange={onChangeDirection}>
       <Grid dir="ltr" container spacing={2.5}>
-        {["ltr", "rtl"].map((direction, index) => {
+        {['ltr', 'rtl'].map((direction, index) => {
           const isSelected = themeDirection === direction;
 
           return (
@@ -32,17 +30,13 @@ export default function SettingDirection() {
               <BoxStyle
                 sx={{
                   ...(isSelected && {
-                    color: "primary.main",
+                    color: 'primary.main',
                     boxShadow: (theme) => theme.customShadows.z20,
                   }),
                 }}
               >
                 <Iconify
-                  icon={
-                    index === 0
-                      ? "ph:align-left-duotone"
-                      : "ph:align-right-duotone"
-                  }
+                  icon={index === 0 ? 'ph:align-left-duotone' : 'ph:align-right-duotone'}
                   width={28}
                   height={28}
                 />

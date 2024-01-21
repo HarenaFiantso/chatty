@@ -1,12 +1,13 @@
-import PropTypes from "prop-types";
-import { styled, alpha } from "@mui/material/styles";
-import { Grid, RadioGroup, CardActionArea, Box, Stack } from "@mui/material";
-import useSettings from "../../../hooks/useSettings";
-import BoxMask from "./BoxMask";
+import BoxMask from './BoxMask';
+import { Box, CardActionArea, Grid, RadioGroup, Stack } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+
+import useSettings from '../../../hooks/useSettings';
 
 const BoxStyle = styled(CardActionArea)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
+  display: 'flex',
+  flexDirection: 'column',
   padding: theme.spacing(1.5),
   color: theme.palette.text.disabled,
   border: `solid 1px ${theme.palette.grey[500_12]}`,
@@ -17,31 +18,23 @@ export default function SettingLayout() {
   const { themeLayout, onChangeLayout } = useSettings();
 
   return (
-    <RadioGroup
-      name="themeLayout"
-      value={themeLayout}
-      onChange={onChangeLayout}
-    >
+    <RadioGroup name="themeLayout" value={themeLayout} onChange={onChangeLayout}>
       <Grid dir="ltr" container spacing={2.5}>
-        {["horizontal", "vertical"].map((layout) => {
+        {['horizontal', 'vertical'].map((layout) => {
           const isSelected = themeLayout === layout;
-          const isVertical = layout === "vertical";
+          const isVertical = layout === 'vertical';
 
           return (
             <Grid key={layout} item xs={6}>
               <BoxStyle
                 sx={{
                   ...(isSelected && {
-                    color: "primary.main",
+                    color: 'primary.main',
                     boxShadow: (theme) => theme.customShadows.z20,
                   }),
                 }}
               >
-                {isVertical ? (
-                  <VerticalBox isSelected={isSelected} />
-                ) : (
-                  <HorizontalBox isSelected={isSelected} />
-                )}
+                {isVertical ? <VerticalBox isSelected={isSelected} /> : <HorizontalBox isSelected={isSelected} />}
                 <BoxMask value={layout} />
               </BoxStyle>
             </Grid>

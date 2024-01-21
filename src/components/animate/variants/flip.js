@@ -1,4 +1,4 @@
-import { varTranEnter, varTranExit } from "./transition";
+import { varTranEnter, varTranExit } from './transition';
 
 export const varFlip = (props) => {
   const durationIn = props?.durationIn;

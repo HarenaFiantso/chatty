@@ -1,10 +1,10 @@
-import { createContext, useEffect } from "react";
-import { defaultSettings } from "../config/config";
-import useLocalStorage from "../hooks/useLocalStorage";
-import getColorPresets, {
-  defaultPreset,
-  colorPresets,
-} from "../utils/getColorPresets";
+import { createContext, useEffect } from 'react';
+
+import { defaultSettings } from '../config/config';
+
+import getColorPresets, { colorPresets, defaultPreset } from '../utils/getColorPresets';
+
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const initialState = {
   ...defaultSettings,
@@ -27,7 +27,7 @@ const initialState = {
 const SettingsContext = createContext(initialState);
 
 const SettingsProvider = ({ children }) => {
-  const [settings, setSettings] = useLocalStorage("settings", {
+  const [settings, setSettings] = useLocalStorage('settings', {
     themeMode: initialState.themeMode,
     themeLayout: initialState.themeLayout,
     themeStretch: initialState.themeStretch,
@@ -36,18 +36,18 @@ const SettingsProvider = ({ children }) => {
     themeColorPresets: initialState.themeColorPresets,
   });
 
-  const isArabic = localStorage.getItem("i18nextLng") === "ar";
+  const isArabic = localStorage.getItem('i18nextLng') === 'ar';
 
   useEffect(() => {
     if (isArabic) {
-      onChangeDirectionByLang("ar");
+      onChangeDirectionByLang('ar');
     }
   }, [isArabic]);
 
   const onToggleMode = () => {
     setSettings({
       ...settings,
-      themeMode: settings.themeMode === "light" ? "dark" : "light",
+      themeMode: settings.themeMode === 'light' ? 'dark' : 'light',
     });
   };
 
@@ -61,7 +61,7 @@ const SettingsProvider = ({ children }) => {
   const onToggleDirection = () => {
     setSettings({
       ...settings,
-      themeDirection: settings.themeDirection === "rtl" ? "ltr" : "rtl",
+      themeDirection: settings.themeDirection === 'rtl' ? 'ltr' : 'rtl',
     });
   };
 
@@ -75,15 +75,14 @@ const SettingsProvider = ({ children }) => {
   const onChangeDirectionByLang = (lang) => {
     setSettings({
       ...settings,
-      themeDirection: lang === "ar" ? "rtl" : "ltr",
+      themeDirection: lang === 'ar' ? 'rtl' : 'ltr',
     });
   };
 
   const onToggleLayout = () => {
     setSettings({
       ...settings,
-      themeLayout:
-        settings.themeLayout === "vertical" ? "horizontal" : "vertical",
+      themeLayout: settings.themeLayout === 'vertical' ? 'horizontal' : 'vertical',
     });
   };
 
@@ -97,7 +96,7 @@ const SettingsProvider = ({ children }) => {
   const onToggleContrast = () => {
     setSettings({
       ...settings,
-      themeContrast: settings.themeContrast === "default" ? "bold" : "default",
+      themeContrast: settings.themeContrast === 'default' ? 'bold' : 'default',
     });
   };
 

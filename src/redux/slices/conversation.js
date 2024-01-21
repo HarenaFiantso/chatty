@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { faker } from "@faker-js/faker";
+import { faker } from '@faker-js/faker';
+
+import { createSlice } from '@reduxjs/toolkit';
+
 // import { AWS_S3_REGION, S3_BUCKET_NAME } from "../../config";
 
-const user_id = window.localStorage.getItem("user_id");
+const user_id = window.localStorage.getItem('user_id');
 
 const initialState = {
   direct_chat: {
@@ -14,22 +16,20 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "conversation",
+  name: 'conversation',
   initialState,
   reducers: {
     fetchDirectConversations(state, action) {
       const list = action.payload.conversations.map((el) => {
-        const user = el.participants.find(
-          (elm) => elm._id.toString() !== user_id
-        );
+        const user = el.participants.find((elm) => elm._id.toString() !== user_id);
         return {
           id: el._id,
           user_id: user?._id,
           name: `${user?.firstName} ${user?.lastName}`,
-          online: user?.status === "Online",
+          online: user?.status === 'Online',
           img: `https://${S3_BUCKET_NAME}.s3.${AWS_S3_REGION}.amazonaws.com/${user?.avatar}`,
           msg: el.messages.slice(-1)[0].text,
-          time: "9:36",
+          time: '9:36',
           unread: 0,
           pinned: false,
           about: user?.about,
@@ -40,34 +40,28 @@ const slice = createSlice({
     },
     updateDirectConversation(state, action) {
       const this_conversation = action.payload.conversation;
-      state.direct_chat.conversations = state.direct_chat.conversations.map(
-        (el) => {
-          if (el?.id !== this_conversation._id) {
-            return el;
-          } else {
-            const user = this_conversation.participants.find(
-              (elm) => elm._id.toString() !== user_id
-            );
-            return {
-              id: this_conversation._id._id,
-              user_id: user?._id,
-              name: `${user?.firstName} ${user?.lastName}`,
-              online: user?.status === "Online",
-              img: faker.image.avatar(),
-              msg: faker.music.songName(),
-              time: "9:36",
-              unread: 0,
-              pinned: false,
-            };
-          }
+      state.direct_chat.conversations = state.direct_chat.conversations.map((el) => {
+        if (el?.id !== this_conversation._id) {
+          return el;
+        } else {
+          const user = this_conversation.participants.find((elm) => elm._id.toString() !== user_id);
+          return {
+            id: this_conversation._id._id,
+            user_id: user?._id,
+            name: `${user?.firstName} ${user?.lastName}`,
+            online: user?.status === 'Online',
+            img: faker.image.avatar(),
+            msg: faker.music.songName(),
+            time: '9:36',
+            unread: 0,
+            pinned: false,
+          };
         }
-      );
+      });
     },
     addDirectConversation(state, action) {
       const this_conversation = action.payload.conversation;
-      const user = this_conversation.participants.find(
-        (elm) => elm._id.toString() !== user_id
-      );
+      const user = this_conversation.participants.find((elm) => elm._id.toString() !== user_id);
       state.direct_chat.conversations = state.direct_chat.conversations.filter(
         (el) => el?.id !== this_conversation._id
       );
@@ -75,10 +69,10 @@ const slice = createSlice({
         id: this_conversation._id._id,
         user_id: user?._id,
         name: `${user?.firstName} ${user?.lastName}`,
-        online: user?.status === "Online",
+        online: user?.status === 'Online',
         img: faker.image.avatar(),
         msg: faker.music.songName(),
-        time: "9:36",
+        time: '9:36',
         unread: 0,
         pinned: false,
       });
@@ -90,7 +84,7 @@ const slice = createSlice({
       const messages = action.payload.messages;
       const formatted_messages = messages.map((el) => ({
         id: el._id,
-        type: "msg",
+        type: 'msg',
         subtype: el.type,
         message: el.text,
         incoming: el.to === user_id,

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { LazyMotion } from "framer-motion";
+import { LazyMotion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-const loadFeatures = () => import("./variants/features.js").then((res) => res.default);
+const loadFeatures = () => import('./variants/features.js').then((res) => res.default);
 
 MotionLazyContainer.propTypes = {
   children: PropTypes.node,

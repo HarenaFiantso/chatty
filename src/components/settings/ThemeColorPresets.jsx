@@ -1,13 +1,10 @@
-import PropTypes from "prop-types";
-import { useMemo } from "react";
-import {
-  alpha,
-  ThemeProvider,
-  createTheme,
-  useTheme,
-} from "@mui/material/styles";
-import useSettings from "../../hooks/useSettings";
-import componentsOverride from "../../theme/overrides";
+import { ThemeProvider, alpha, createTheme, useTheme } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import { useMemo } from 'react';
+
+import componentsOverride from '../../theme/overrides';
+
+import useSettings from '../../hooks/useSettings';
 
 ThemeColorPresets.propTypes = {
   children: PropTypes.node,
