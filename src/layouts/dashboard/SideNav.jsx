@@ -12,11 +12,41 @@ import AntSwitch from "../../components/AntSwitch";
 import useSettings from "../../hooks/useSettings";
 import { Nav_Buttons, Nav_Setting } from "../../data";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { UpdateTab } from "../../redux/slices/app";
+
+const getPath = (index) => {
+  switch (index) {
+    case 0:
+      return "/app";
+
+    case 1:
+      return "/group";
+
+    case 2:
+      return "/call";
+
+    case 3:
+      return "/settings";
+
+    default:
+      break;
+  }
+};
 
 export default function SideNav() {
   const theme = useTheme();
   const [selected, setSelected] = useState(0);
+  const dispatch = useDispatch();
   const { onToggleMode } = useSettings();
+  const { tab } = useSelector((state) => state.app);
+  const navigate = useNavigate();
+  const selectedTab = tab;
+  const handleChangeTab = (index) => {
+    dispatch(UpdateTab({ tab: index }));
+    navigate(getPath(index));
+  };
 
   return (
     <Box
@@ -55,15 +85,20 @@ export default function SideNav() {
             spacing={3}
           >
             {Nav_Buttons.map((el) =>
-              el.index === selected ? (
+              el.index === selectedTab ? (
                 <Box
-                  key={el.index}
                   sx={{
                     backgroundColor: theme.palette.primary.main,
                     borderRadius: 1.5,
                   }}
+                  p={1}
                 >
-                  <IconButton sx={{ width: "max-content", color: "white" }}>
+                  <IconButton
+                    onClick={() => {
+                      handleChangeTab(el.index);
+                    }}
+                    sx={{ width: "max-content", color: "#FFF" }}
+                  >
                     {el.icon}
                   </IconButton>
                 </Box>
@@ -78,7 +113,7 @@ export default function SideNav() {
                         : theme.palette.text.primary,
                   }}
                   onClick={() => {
-                    setSelected(el.index);
+                    handleChangeTab(el.index);
                   }}
                 >
                   {el.icon}
@@ -87,26 +122,31 @@ export default function SideNav() {
             )}
 
             <Divider sx={{ width: 48 }} />
-            {selected === 3 ? (
-              <Box
-                sx={{
-                  backgroundColor: theme.palette.primary.main,
-                  borderRadius: 1.5,
-                }}
-              >
-                {Nav_Setting.map((el) => (
+            {Nav_Setting.map((el) => {
+              return el.index == selectedTab ? (
+                <Box
+                  sx={{
+                    backgroundColor: theme.palette.primary.main,
+                    borderRadius: 1.5,
+                  }}
+                  p={1}
+                >
                   <IconButton
-                    key={el.index}
-                    sx={{ width: "max-content", color: "white" }}
+                    onClick={() => {
+                      handleChangeTab(el.index);
+                    }}
+                    sx={{ width: "max-content", color: "#ffffff" }}
                   >
                     {el.icon}
                   </IconButton>
-                ))}
-              </Box>
-            ) : (
-              Nav_Setting.map((el) => (
+                </Box>
+              ) : (
                 <IconButton
-                  key={el.index}
+                  onClick={() => {
+                    handleChangeTab(el.index);
+
+                    // dispatch(UpdateTab(el.index));
+                  }}
                   sx={{
                     width: "max-content",
                     color:
@@ -114,14 +154,11 @@ export default function SideNav() {
                         ? "#080707"
                         : theme.palette.text.primary,
                   }}
-                  onClick={() => {
-                    setSelected(el.index);
-                  }}
                 >
                   {el.icon}
                 </IconButton>
-              ))
-            )}
+              );
+            })}
           </Stack>
         </Stack>
 
