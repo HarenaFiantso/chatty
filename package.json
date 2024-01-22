@@ -23,7 +23,7 @@
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "aws-sdk": "^2.1348.0",
+    "aws-sdk": "^2.1540.0",
     "axios": "^1.2.6",
     "emoji-mart": "^5.2.2",
     "framer-motion": "^10.18.0",
