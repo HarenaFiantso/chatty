@@ -21,7 +21,7 @@
     "@mui/material": "^5.15.10",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^6.2.0",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^13.5.0",
     "aws-sdk": "^2.1540.0",
     "axios": "^1.6.7",
