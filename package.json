@@ -14,7 +14,7 @@
     "@emoji-mart/data": "^1.0.6",
     "@emoji-mart/react": "^1.0.1",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.11.5",
     "@hookform/resolvers": "^3.3.4",
     "@iconify/react": "^4.0.0",
     "@mui/lab": "^5.0.0-alpha.166",
