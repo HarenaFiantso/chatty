@@ -24,7 +24,7 @@
     "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^13.5.0",
     "aws-sdk": "^2.1540.0",
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "emoji-mart": "^5.2.2",
     "framer-motion": "^11.0.20",
     "phosphor-react": "^1.4.1",
