@@ -12,7 +12,8 @@
     "api": "npm run start:dev -w api",
     "ui": "npm run dev -w ui",
     "start": "concurrently \"npm run api\" \"npm run ui\"",
-    "format": "prettier --write --ignore-path .prettierignore \"api/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" \"ui/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" ."
+    "format": "prettier --write . --ignore-path .prettierignore",
+    "format:check": "prettier --check . --ignore-path .prettierignore"
   },
   "keywords": [],
   "author": "",
