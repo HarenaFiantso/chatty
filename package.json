@@ -1,6 +1,6 @@
 {
   "name": "chatty",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Chatty is a chat application built using a monorepo structure with React for the frontend and NestJS for the backend. The project aims to provide a seamless and real-time chat experience. Initialized since my first year at HEI but not yet finished xD",
   "main": "index.js",
@@ -13,13 +13,15 @@
     "ui": "npm run dev -w ui",
     "start": "concurrently \"npm run api\" \"npm run ui\"",
     "format": "prettier --write . --ignore-path .prettierignore",
-    "format:check": "prettier --check . --ignore-path .prettierignore"
+    "format:check": "prettier --check . --ignore-path .prettierignore",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "standard-version": "^9.3.2"
   }
 }
