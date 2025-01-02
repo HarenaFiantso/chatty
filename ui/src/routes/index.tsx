@@ -15,6 +15,7 @@ import Group from '../pages/dashboard/Group';
 import Profile from '../pages/dashboard/Profile';
 import Settings from '../pages/dashboard/Settings';
 import NotFound from '../pages/NotFound';
+import { DEFAULT_PATH } from '../config';
 
 export default function Router() {
   return useRoutes([
@@ -33,6 +34,7 @@ export default function Router() {
       path: '/',
       element: <DashboardLayout />,
       children: [
+        { element: <Navigate to={DEFAULT_PATH} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
         { path: 'group', element: <Group /> },
         { path: 'settings', element: <Settings /> },
