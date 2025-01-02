@@ -23,5 +23,8 @@
     "concurrently": "^9.1.2",
     "prettier": "^2.3.2",
     "standard-version": "^9.3.2"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.1.1"
   }
 }
