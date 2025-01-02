@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
+import { DEFAULT_PATH } from '../config';
 import AuthLayout from '../layouts/auth';
 import DashboardLayout from '../layouts/dashboard';
 import Login from '../pages/auth/Login';
@@ -15,7 +16,6 @@ import Group from '../pages/dashboard/Group';
 import Profile from '../pages/dashboard/Profile';
 import Settings from '../pages/dashboard/Settings';
 import NotFound from '../pages/NotFound';
-import { DEFAULT_PATH } from '../config';
 
 export default function Router() {
   return useRoutes([
