@@ -1,19 +1,19 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import AuthLayout from '../layouts/auth';
+import DashboardLayout from '../layouts/dashboard';
 import Login from '../pages/auth/Login';
+import NewPassword from '../pages/auth/NewPassword';
 import Register from '../pages/auth/Register';
 import ResetPassword from '../pages/auth/ResetPassword';
-import NewPassword from '../pages/auth/NewPassword';
 import Verify from '../pages/auth/Verify';
-import GeneralApp from '../pages/dashboard/GeneralApp';
-import DashboardLayout from '../layouts/dashboard';
-import Group from '../pages/dashboard/Group';
-import Settings from '../pages/dashboard/Settings';
-import Conversation from '../pages/dashboard/Conversation';
+import Call from '../pages/dashboard/Call';
 import Chats from '../pages/dashboard/Chats';
 import Contact from '../pages/dashboard/Contact';
+import Conversation from '../pages/dashboard/Conversation';
+import GeneralApp from '../pages/dashboard/GeneralApp';
+import Group from '../pages/dashboard/Group';
 import Profile from '../pages/dashboard/Profile';
-import Call from '../pages/dashboard/Call';
+import Settings from '../pages/dashboard/Settings';
 import NotFound from '../pages/NotFound';
 
 export default function Router() {
